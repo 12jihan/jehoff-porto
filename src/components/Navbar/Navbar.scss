@@ -1,0 +1,30 @@
+.nav-container {
+  height: 3.5em;
+  padding: 0 1.5em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #222;
+}
+
+.nav-grp {
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  transition: all 300ms;
+
+  &:hover {
+    background-color: #999;
+    text-decoration: none;
+  }
+}
