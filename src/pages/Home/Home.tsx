@@ -1,16 +1,10 @@
-import { ReactElement } from "react";
 import "./Home.scss";
+import { ReactElement } from "react";
 
 function Home(): ReactElement {
   return (
     <div className="home-container">
-      <section className="banner-container">
-        <div>
-          <h1>Jareem E. Hoff</h1>
-          <h4>Fullstack Engineer</h4>
-        </div>
-      </section>
-      <section className="section-container">
+      <section className="intro-container">
         <div>
           <h3>Who I Am</h3>
           <p>
@@ -48,14 +42,16 @@ function Home(): ReactElement {
             also delivers real value to users.
           </p>
         </div>
-        {/* <div> */}
-        {/*   <h3>Let's Connect</h3> */}
-        {/*   <p> */}
-        {/*     I'm always excited to discuss new projects and opportunities. */}
-        {/*     Whether you need help with a specific challenge or want to explore */}
-        {/*     potential collaboration, I'd love to hear from you. */}
-        {/*   </p> */}
-        {/* </div> */}
+      </section>
+      <section className="connect-container">
+        <div>
+          <h3>Let's Connect</h3>
+          <p>
+            I'm always excited to discuss new projects and opportunities.
+            Whether you need help with a specific challenge or want to explore
+            potential collaboration, I'd love to hear from you.
+          </p>
+        </div>
       </section>
     </div>
   );
