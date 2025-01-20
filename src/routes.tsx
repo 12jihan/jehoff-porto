@@ -6,6 +6,7 @@ import Blog from "./pages/Blog/Blog";
 import Contact from "./pages/Contact/Contact";
 import Projects from "./pages/Projects/Projects";
 import Banner from "./components/Banner/Banner";
+import ContactComponent from "./components/contact-component/contact-component";
 
 const routes = createBrowserRouter([
   {
@@ -25,6 +26,7 @@ const routes = createBrowserRouter([
             <div className="container">
               <Home />
             </div>
+            <ContactComponent />
           </>
         ),
       },
