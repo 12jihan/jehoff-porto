@@ -1,3 +1,4 @@
+@use "sass:color";
 @use "../abstracts/variables" as *;
 @use "../abstracts/functions" as *;
 @use "../abstracts/mixins" as *;
@@ -16,7 +17,7 @@
     color: color("white");
 
     &:hover {
-      background-color: darken(color("primary"), 10%);
+      background-color: color.adjust(color("primary"), $lightness: -10%);
     }
   }
 

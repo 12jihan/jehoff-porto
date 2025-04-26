@@ -1,3 +1,4 @@
+@use "sass:map";
 // Colors
 $colors: (
   "primary": #1a73e8,
@@ -13,8 +14,9 @@ $colors: (
 );
 
 // Typography
-$font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-  Oxygen, Ubuntu, Cantarell, sans-serif;
+$font-family-base:
+  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
+  Cantarell, sans-serif;
 $font-sizes: (
   "xs": 0.75rem,
   "sm": 0.875rem,
@@ -52,4 +54,4 @@ $breakpoints: (
 // Layout
 $container-max-width: 1200px;
 $grid-columns: 12;
-$grid-gap: map-get($spacing, "4");
+$grid-gap: map.get($spacing, "4");

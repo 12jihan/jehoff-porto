@@ -36,7 +36,7 @@ a {
   color: color("primary");
   text-decoration: none;
 
-  // &:hover {
-  //   text-decoration: underline;
-  // }
+  &:hover {
+    text-decoration: none;
+  }
 }

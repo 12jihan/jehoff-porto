@@ -5,15 +5,18 @@ function Home(): ReactElement {
   return (
     <div className="home-container">
       <section className="banner-container">
-        <div>
+        <div className="banner-text">
           <h1>Jareem E. Hoff</h1>
           <p>Fullstack Engineer</p>
+          <h4>Commits This Year: 215</h4>
         </div>
       </section>
+
       <section className="section-container section-mt">
         <div className="section-header">
           <h1>About Me</h1>
         </div>
+
         <div className="section-body">
           <div className="intro-wrapper">
             <div>
