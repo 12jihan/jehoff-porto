@@ -5,49 +5,18 @@ function Home(): ReactElement {
   return (
     <section className="home-container">
       <div className="header-container">
-        <h2>Introduction</h2>
+        <h2>Work Experience</h2>
       </div>
       <div className="intro-container">
         <div className="intro-row">
-          <div>
-            <h3>Who I Am</h3>
-            <p>
-              Hi, I'm a professional web developer with over 8 years of
-              experience crafting digital experiences that make a difference.
-              I'm passionate about turning complex problems into elegant,
-              user-friendly solutions
-            </p>
-          </div>
-          <div>
-            <h3>What I Do</h3>
-            <p>I specialize in:</p>
-            <ul>
-              <li>Frontend Development (React, Angular)</li>
-              <li>Backend Architecture (Node.js, Python)</li>
-              <li>Performance Optimization</li>
-              <li>User Experience Design</li>
-              <li>Cloud Infrastructure</li>
-            </ul>
-          </div>
-        </div>
-        <div className="intro-row">
-          <div>
-            <h3>My Approach</h3>
-            <p>
-              I believe in writing clean, maintainable code that stands the test
-              of time. Every project I undertake is an opportunity to create
-              something meaningful that not only meets technical requirements
-              but also delivers real value to users.
-            </p>
-          </div>
-          <div>
-            <h3>Beyond</h3>
-            <p>
-              I believe in writing clean, maintainable code that stands the test
-              of time. Every project I undertake is an opportunity to create
-              something meaningful that not only meets technical requirements
-              but also delivers real value to users.
-            </p>
+          <h3>Experience</h3>
+          <div className="__card">
+            <div className="__card-header">
+              <p></p>
+            </div>
+            <div className="__card-body">
+              <p></p>
+            </div>
           </div>
         </div>
       </div>
