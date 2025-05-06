@@ -44,10 +44,6 @@
     display: flex;
     flex-direction: row;
     gap: 2rem;
-
-    div {
-      width: 50%;
-    }
   }
 }
 
@@ -57,12 +53,64 @@
   padding-top: 0;
 }
 
-.__card {
-  .__card-header {
-    h4 {
-      font-size: 1rem;
+.__long-card {
+  display: flex;
+  flex-direction: row;
+  height: 12rem;
+  width: 100%;
+  // align-items: center;
+  padding: 1.2rem;
+  box-shadow: 0px 5px 5px 0px rgba($color: #000000, $alpha: 0.3);
+  border: 1px solid rgba($color: #000000, $alpha: 0.18);
+  border-radius: 5px;
+
+  div {
+    width: 100%;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .__long-card-header {
+    width: 18rem;
+    p {
+      font-size: 1.1rem;
+    }
+
+    .job-company {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: rgba($color: #5b46e5, $alpha: 1);
+    }
+
+    .job-title {
+      font-weight: 700;
     }
   }
-  .__card-body {
+
+  .__long-card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
+}
+
+.badge-group-h {
+  display: flex;
+  flex-direction: row;
+  gap: 1.4rem;
+}
+
+.badge {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  // max-width: 5rem;
+  color: white;
+  background-color: rgba($color: #5b46e5, $alpha: 1);
+  padding: 0.1rem 0.4rem;
+  border: 1px solid #5b46e5;
+  border-radius: 3px;
 }
