@@ -72,6 +72,13 @@ function Home(): ReactElement {
       </section>
     </div>
   );
+interface Job {
+  name: string;
+  title: string;
+  description: string;
+  dates: string;
+  location: string;
+  tech: string[];
 }
 
 export default Home;
