@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 
 function Blog(): ReactElement {
-  return <div></div>;
+  return <div>blog</div>;
 }
 
 export default Blog;

@@ -2,6 +2,7 @@
 @use "../abstracts/variables" as *;
 @use "../abstracts/functions" as *;
 @use "../abstracts/mixins" as *;
+@use "sass:color";
 
 .button {
   @include flex(row, center, center);
@@ -17,7 +18,15 @@
     color: color("white");
 
     &:hover {
+<<<<<<< HEAD
       background-color: color.adjust(color("primary"), $lightness: -10%);
+=======
+      background-color: color.adjust(
+        color("primary"),
+        $lightness: -10%,
+        $space: hsl
+      );
+>>>>>>> feature/navbar-updates-2
     }
   }
 

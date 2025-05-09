@@ -1,0 +1,16 @@
+.banner-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #333;
+  color: white;
+  height: 50vh;
+  width: 100%;
+
+  .banner-subtext {
+    font-size: 1.1rem;
+    width: 32rem;
+    text-align: center;
+  }
+}
