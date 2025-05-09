@@ -3,10 +3,8 @@ import Home from "./pages/Home/Home";
 import Navbar from "./components/Navbar/Navbar";
 import Resume from "./pages/Resume/Resume";
 import Blog from "./pages/Blog/Blog";
-import Contact from "./pages/Contact/Contact";
+import ContactPage from "./pages/Contact/ContactPage";
 import Projects from "./pages/Projects/Projects";
-import Banner from "./components/Banner/Banner";
-import ContactComponent from "./components/contact-component/contact-component";
 
 const routes = createBrowserRouter([
   {
@@ -20,15 +18,7 @@ const routes = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: (
-          <>
-            <Banner />
-            <div className="container">
-              <Home />
-            </div>
-            <ContactComponent />
-          </>
-        ),
+        element: <Home />,
       },
       {
         path: "/blog",
@@ -58,7 +48,7 @@ const routes = createBrowserRouter([
         path: "/contact",
         element: (
           <div className="container">
-            <Contact />
+            <ContactPage />
           </div>
         ),
       },

@@ -59,49 +59,6 @@
   padding-top: 0;
 }
 
-// .__card {
-//   display: flex;
-//   flex-direction: row;
-//   height: 12rem;
-//   width: 100%;
-//   // align-items: center;
-//   padding: 1.2rem;
-//   box-shadow: 0px 5px 5px 0px rgba($color: #000000, $alpha: 0.3);
-//   border: 1px solid rgba($color: #000000, $alpha: 0.18);
-//   border-radius: 5px;
-//
-//   div {
-//     width: 100%;
-//   }
-//
-//   p {
-//     margin: 0;
-//   }
-//
-//   .__card-header {
-//     width: 18rem;
-//     p {
-//       font-size: 1.1rem;
-//     }
-//
-//     .job-company {
-//       font-size: 1.3rem;
-//       font-weight: 600;
-//       color: rgba($color: #5b46e5, $alpha: 1);
-//     }
-//
-//     .job-title {
-//       font-weight: 700;
-//     }
-//   }
-//
-//   .__card-body {
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: space-between;
-//   }
-// }
-
 .__long-card {
   display: flex;
   flex-direction: row;
@@ -149,6 +106,18 @@
   }
 }
 
+.badge {
+  padding: 0.1rem 0.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #5b46e5;
+  background-color: #e0e7ff;
+  border: 1px solid #e0e7ff;
+  border-radius: 3px;
+}
+
 .badge-group-h {
   display: flex;
   width: 100%;
@@ -156,17 +125,4 @@
   justify-content: flex-start;
   gap: 1.4rem;
   overflow-x: hidden;
-}
-
-.badge {
-  padding: 0.1rem 0.4rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  // max-width: 5rem;
-  color: #5b46e5;
-  background-color: #e0e7ff;
-  border: 1px solid #e0e7ff;
-  border-radius: 3px;
 }

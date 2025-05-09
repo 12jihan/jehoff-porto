@@ -1,3 +1,5 @@
+import Banner from "../../components/Banner/Banner";
+import Contact from "../../components/Contact/Contact";
 import "./Home.scss";
 import { ReactElement } from "react";
 
@@ -9,7 +11,8 @@ interface Job {
   location: string;
   tech: string[];
 }
-function Home(): ReactElement {
+
+export default function Home(): ReactElement {
   const experience: Job[] = [
     {
       name: "Google",
@@ -161,55 +164,52 @@ function Home(): ReactElement {
       ],
     },
   ];
+
   return (
-    <section className="home-container">
-      <div className="header-container">
-        <h2>Work Experience</h2>
-      </div>
-      <div className="intro-container">
-        <div className="intro-column">
-          {experience.map((job: Job): JSX.Element => {
-            return (
-              <div className="__long-card">
-                <div className="__long-card-header">
-                  <p className="job-name">{job.name}</p>
-                  <p className="job-title">{job.title}</p>
-                  <p className="job-location">New York, NY (Remote)</p>
-                  <p className="job-date">{job.dates}</p>
-                </div>
-                <div className="__long-card-body">
-                  <p>
-                    Lead engineer for high-frequency trading systems processing
-                    $50M+ daily volume. Architected and implemented real-time
-                    market data processing pipeline reducing latency by 40%.
-                    Mentored team of 5 engineers.
-                  </p>
-
-                  <div className="badge-group-h">
-                    {job.tech.map((tech: string): JSX.Element => {
-                      return <span className="badge">{tech}</span>;
-                    })}
-                  </div>
-
-                  {/* {if(job)} */}
-                </div>
-              </div>
-            );
-          })}
+    <>
+      <Banner />
+      <section className="home-container">
+        <div className="header-container">
+          <h2>Work Experience</h2>
         </div>
-      </div>
-      {/* <div className="connect-container"> */}
-      {/*   <div> */}
-      {/*     <h3>Let's Connect</h3> */}
-      {/*     <p> */}
-      {/*       Senior Software Engineer based in NYC with 9+ years of experience */}
-      {/*       building scalable applications. Specialized in distributed systems, */}
-      {/*       real-time applications, and cloud architecture. */}
-      {/*     </p> */}
-      {/*   </div> */}
-      {/* </div> */}
-    </section>
+        <div className="intro-container">
+          <div className="container intro-column">
+            {experience.map((job: Job, index: number): ReactElement => {
+              return (
+                <div className="__long-card" key={index}>
+                  <div className="__long-card-header">
+                    <p className="job-name">{job.name}</p>
+                    <p className="job-title">{job.title}</p>
+                    <p className="job-location">New York, NY (Remote)</p>
+                    <p className="job-date">{job.dates}</p>
+                  </div>
+                  <div className="__long-card-body">
+                    <p>
+                      Lead engineer for high-frequency trading systems
+                      processing $50M+ daily volume. Architected and implemented
+                      real-time market data processing pipeline reducing latency
+                      by 40%. Mentored team of 5 engineers.
+                    </p>
+
+                    <div className="badge-group-h">
+                      {job.tech.map(
+                        (tech: string, index: number): JSX.Element => {
+                          return (
+                            <span className="badge" key={index}>
+                              {tech}
+                            </span>
+                          );
+                        },
+                      )}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+      <Contact />
+    </>
   );
 }
-
-export default Home;
