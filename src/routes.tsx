@@ -5,6 +5,7 @@ import Resume from "./pages/Resume/Resume";
 import Blog from "./pages/Blog/Blog";
 import ContactPage from "./pages/Contact/ContactPage";
 import Projects from "./pages/Projects/Projects";
+import Footer from "./components/Footer/Footer";
 
 const routes = createBrowserRouter([
   {
@@ -13,6 +14,7 @@ const routes = createBrowserRouter([
       <>
         <Navbar />
         <Outlet />
+        <Footer />
       </>
     ),
     children: [
@@ -30,11 +32,7 @@ const routes = createBrowserRouter([
       },
       {
         path: "/resume",
-        element: (
-          <div className="container">
-            <Resume />
-          </div>
-        ),
+        element: <Resume />,
       },
       {
         path: "/projects",

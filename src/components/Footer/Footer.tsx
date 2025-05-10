@@ -1,9 +1,10 @@
+import "./Footer.scss";
 import { ReactElement } from "react";
 
 export default function Footer(): ReactElement {
   return (
-    <div>
-      <p>test</p>
-    </div>
+    <footer className="footer">
+      <p> © 2025 BlinkTek</p>
+    </footer>
   );
 }

@@ -1,211 +1,72 @@
 import Banner from "../../components/Banner/Banner";
 import Contact from "../../components/Contact/Contact";
+import experience from "../../experience";
+import { Job } from "../../interfaces/Jobs/Job";
 import "./Home.scss";
 import { ReactElement } from "react";
 
-interface Job {
-  name: string;
-  title: string;
-  description: string;
-  dates: string;
-  location: string;
-  tech: string[];
-}
-
 export default function Home(): ReactElement {
-  const experience: Job[] = [
-    {
-      name: "Google",
-      title: "Software Engineer (Consulting)",
-      description:
-        "Design and development of critical front-end features for high-impact Google products. Architected, implemented, tested, and maintained robust front-end solutions using Angular/TypeScript, while actively managing project priorities. Tackled complex engineering challenges across the full software development lifecycle, contributing expertise, front-end architecture to enhance user interaction and maintain core product stability at massive scale.",
-      dates: "FEB 2025 - PRESENT",
-      location: "New York, NY (Remote)",
-      tech: [
-        "Angular 19",
-        "GCP",
-        "Java",
-        "Blaze (Bazel)",
-        "TypeScript",
-        "Fig",
-        "gRPC",
-      ],
-    },
-    {
-      name: "Dillinger RAD",
-      title: "Fullstack Engineer (Consulting)",
-      description:
-        "Modernized enterprise tools with cutting-edge technology, resulting in 40% faster application performance. Developed dynamic user interfaces with Angular 17-19 transforming how users interact with our applications. Created automated deployment processes using Bash script & Github Actions cutting deployment time by more than half.",
-      dates: "MAR 2024 - FEB 2025",
-      location: "New York, NY (Remote)",
-      tech: [
-        "Angular 19",
-        "GCP",
-        "Python",
-        "Node.js",
-        "TypeScript",
-        "Github",
-        "Firebase",
-      ],
-    },
-    {
-      name: "Veterans Affairs",
-      title: "Software Engineer (Consulting)",
-      description:
-        "Spearheaded development of a custom component library that accelerated team productivity by 45% across the Digital GI Bill application. Contributed to architecting and developing a scalable solution to handling back-end processing of proprietary government data. Developed accessible user interfaces meeting UI/UX and 508 compliance standards, expanding application reach to users with disabilities.",
-      dates: "AUG 2021 - NOV 2023",
-      location: "New York, NY (Remote)",
-      tech: [
-        "Angular 16",
-        "AWS",
-        "Docker",
-        "Java",
-        "Spring Boot",
-        "Node.js",
-        "TypeScript",
-        "BitBucket",
-      ],
-    },
-    {
-      name: "ABC News",
-      title: "Software Engineer (Consulting)",
-      description:
-        "Architected and deployed an AWS-based COVID-19 data tracking solution that served millions of daily users nationwide. Contributed to development of a virtual interview platform that enabled remote broadcasting capabilities for correspondents, reducing technical setup time by 70%. Front-end development of internal content management tools that streamlined workflow efficiency by 40%.",
-      dates: "JUN 2019 - NOV 2021",
-      location: "New York, NY",
-      tech: [
-        "Angular",
-        "React.js",
-        "Next.js",
-        "AWS",
-        "Python",
-        "Node.js",
-        "TypeScript",
-        "GraphQL",
-        "Postgres",
-        "Github",
-      ],
-    },
-    {
-      name: "Hearst Media",
-      title: "Senior Associate (Consulting)",
-      description:
-        "Developed high-performance web applications from design mock-ups using industry-standard tools, delivering projects 25% ahead of schedule. Engineered mobile-responsive solutions using pure CSS, improving mobile user engagement by 45%. Created modular JavaScript components that reduced code redundancy by 60% and accelerated content delivery. Leveraged Bluecava analytics platform to optimize advertising targeting and A/B testing, improving campaign performance.",
-      dates: "MAR 2019 - JUN 2019",
-      location: "New York, NY",
-      tech: ["React", "Angular", "Github", "Node.js", "TypeScript"],
-    },
-    {
-      name: "Secure Now!",
-      title: "SOFTWARE ENGINEER (Consulting)",
-      description:
-        "Developed interactive web experiences using HTML5, CSS3, and JavaScript frameworks, increasing user session duration by 35%. Implemented advanced data visualization features that enhanced user understanding of complex data sets. Drove feature development through cross-functional collaboration, resulting in enhanced web functionality and improved user satisfaction. Collaborated with design and development teams to plan and execute strategic web application upgrades, ensuring seamless implementation.",
-      dates: "SEPT 2018 - JAN 2019",
-      location: "New York, NY (Remote)",
-      tech: [
-        "PHP",
-        "CakePHP",
-        "AWS",
-        "Python",
-        "React.js",
-        "JavaScript",
-        "TFVC",
-      ],
-    },
-    {
-      name: "USA MCO",
-      title: "SOFTWARE ENGINEER",
-      description:
-        "Optimized API integrations using AJAX and JSON, resulting in faster data retrieval and improved application responsiveness. Created modular Angular components and responsive UI elements using modern web stack, accelerating feature development cycles. Transformed complex design mockups into fully functional web applications using industry-standard design tools, delivering pixel-perfect implementations. Leveraged IBM DB2 for high-performance data storage and retrieval, handling complex transactional workloads with 99.9% uptime.",
-      dates: "",
-      location: "",
-      tech: [
-        "Angular",
-        "DB2",
-        "Node.js",
-        "Express.js",
-        "TypeScript",
-        "Java",
-        "TFVC",
-      ],
-    },
-    {
-      name: "PING Golf",
-      title: "Software Engineer (Consulting)",
-      description:
-        "Led implementation of WCAG 2.1 accessibility standards for PING Golf's website redesign, ensuring compliance with ADA Title III requirements. Engineered reusable Razor components that reduced development time by 40% while ensuring consistent UI patterns across multiple ASP.NET applications. Implemented responsive design patterns using Bootstrap and custom CSS Media Queries that improved mobile user engagement. Managed content updates in Ektron CMS for PING's seasonal product launches, ensuring accurate and timely deployment of new apparel and golf equipment collections.",
-      dates: "MAR 2017 - AUG 2017",
-      location: "Phoenix, AZ",
-      tech: [
-        "C#",
-        "ASP.Net Razor",
-        "Ektron",
-        "JavaScript",
-        "Bootstrap",
-        "TFVC",
-      ],
-    },
-    {
-      name: "Southwest Mobile Apps",
-      title: "UI Developer",
-      description:
-        "Developed new user-facing features using JavaScript framework Angular 2+, with the concept of mobile first design in mind. Ensured the technical feasibility of UI/UX designs through platform testing and research. Performed quality assurance (QA) testing to fix front end bugs using unit testing technologies, Jasmine & Karma. Extensively worked with jQuery Animations for Effects.",
-      dates: "FEB 2015 - JUN 2018",
-      location: "New York, NY",
-      tech: [
-        "JavaScript",
-        "Angular.js",
-        "Angular 2",
-        "Host Gator",
-        "Bizapps",
-        "Jasmine",
-        "Karma",
-        "jQuery",
-      ],
-    },
-  ];
+  function limitString(text: string, maxLength: number): string {
+    let shortened: string = "";
+    if (text.length >= maxLength) {
+      shortened = text.substring(0, maxLength) + " " + "...";
+    } else {
+      shortened = text;
+    }
+    return shortened;
+  }
 
   return (
     <>
       <Banner />
+      <section className="container">
+        <h2>Technologies</h2>
+      </section>
       <section className="home-container">
         <div className="header-container">
           <h2>Work Experience</h2>
         </div>
         <div className="intro-container">
           <div className="container intro-column">
-            {experience.map((job: Job, index: number): ReactElement => {
-              return (
-                <div className="__long-card" key={index}>
-                  <div className="__long-card-header">
-                    <p className="job-name">{job.name}</p>
-                    <p className="job-title">{job.title}</p>
-                    <p className="job-location">New York, NY (Remote)</p>
-                    <p className="job-date">{job.dates}</p>
-                  </div>
-                  <div className="__long-card-body">
-                    <p>
-                      Lead engineer for high-frequency trading systems
-                      processing $50M+ daily volume. Architected and implemented
-                      real-time market data processing pipeline reducing latency
-                      by 40%. Mentored team of 5 engineers.
-                    </p>
+            {experience
+              .slice(0, 3)
+              .map((job: Job, index: number): ReactElement => {
+                return (
+                  <div className="__long-card" key={index}>
+                    <div className="__long-card-header">
+                      <p className="job-name">{job.name}</p>
+                      <p className="job-title">{job.title}</p>
+                      <p className="job-location">New York, NY (Remote)</p>
+                      <p className="job-date">{job.dates}</p>
+                    </div>
+                    <div className="__long-card-body">
+                      <ul>
+                        {job.description
+                          .slice(0, 4)
+                          .map(
+                            (bullet: string, index: number): ReactElement => {
+                              return (
+                                <li key={bullet}>{limitString(bullet, 100)}</li>
+                              );
+                            },
+                          )}
+                      </ul>
 
-                    <div className="badge-group-h">
-                      {job.tech.map(
-                        (tech: string, index: number): JSX.Element => {
-                          return (
-                            <span className="badge" key={index}>
-                              {tech}
-                            </span>
-                          );
-                        },
-                      )}
+                      <div className="badge-group-h">
+                        {job.tech.map(
+                          (tech: string, index: number): JSX.Element | null => {
+                            return (
+                              <span className="badge" key={index}>
+                                {tech}
+                              </span>
+                            );
+                          },
+                        )}
+                      </div>
                     </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
           </div>
         </div>
       </section>
