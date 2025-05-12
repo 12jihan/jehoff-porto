@@ -1,7 +1,22 @@
 import "./Banner.scss";
-import { ReactElement } from "react";
+import { ReactElement, useRef } from "react";
+import * as THREE from "three";
 
 function Banner(): ReactElement {
+  const mountRef = useRef(null);
+
+  useEffect(() => {
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(
+      75,
+      window.innerWidth / window.innerHeight,
+    );
+    const renderer = new THREE.WebGLRenderer();
+
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    if (!mountRef) mountRef.current!.appendChild(renderer.domElement);
+  }, []);
+
   return (
     <div className="banner-container">
       <h1>Jareem E. Hoff</h1>
@@ -16,3 +31,6 @@ function Banner(): ReactElement {
 }
 
 export default Banner;
+function useEffect(arg0: () => void, arg1: never[]) {
+  throw new Error("Function not implemented.");
+}

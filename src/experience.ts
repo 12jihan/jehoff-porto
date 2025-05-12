@@ -9,7 +9,7 @@ const experience: Job[] = [
       "Architected, implemented, tested, and maintained robust front-end solutions using Angular/TypeScript, while actively managing project priorities.",
       "Tackled complex engineering challenges across the full software development lifecycle, contributing expertise, front-end architecture to enhance user interaction and maintain core product stability at massive scale.",
     ],
-    dates: "FEB 2025 - PRESENT",
+    dates: "FEB 2025 - APR 2025",
     location: "New York, NY (Remote)",
     tech: [
       "Angular 19",

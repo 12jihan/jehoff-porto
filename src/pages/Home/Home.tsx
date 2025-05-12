@@ -1,5 +1,6 @@
 import Banner from "../../components/Banner/Banner";
 import Contact from "../../components/Contact/Contact";
+import TechnologiesList from "../../components/TechnologiesList/TechnologiesList";
 import experience from "../../experience";
 import { Job } from "../../interfaces/Jobs/Job";
 import "./Home.scss";
@@ -19,9 +20,7 @@ export default function Home(): ReactElement {
   return (
     <>
       <Banner />
-      <section className="container">
-        <h2>Technologies</h2>
-      </section>
+      <TechnologiesList />
       <section className="home-container">
         <div className="header-container">
           <h2>Work Experience</h2>
@@ -43,13 +42,11 @@ export default function Home(): ReactElement {
                       <ul>
                         {job.description
                           .slice(0, 4)
-                          .map(
-                            (bullet: string, index: number): ReactElement => {
-                              return (
-                                <li key={bullet}>{limitString(bullet, 100)}</li>
-                              );
-                            },
-                          )}
+                          .map((bullet: string): ReactElement => {
+                            return (
+                              <li key={bullet}>{limitString(bullet, 100)}</li>
+                            );
+                          })}
                       </ul>
 
                       <div className="badge-group-h">

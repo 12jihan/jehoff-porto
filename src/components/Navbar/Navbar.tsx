@@ -13,9 +13,9 @@ function Navbar(): ReactElement {
         <div className="nav-grp">
           {/* Routes */}
           <Link to="/">Home</Link>
-          <Link to="/blog">Blog</Link>
           <Link to="/resume">Resume</Link>
           <Link to="/projects">Projects</Link>
+          <Link to="/blog">Blog</Link>
           <Link to="/contact">Contact</Link>
         </div>
       </nav>

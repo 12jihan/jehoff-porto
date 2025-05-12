@@ -23,14 +23,6 @@ const routes = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/blog",
-        element: (
-          <div className="container">
-            <Blog />
-          </div>
-        ),
-      },
-      {
         path: "/resume",
         element: <Resume />,
       },
@@ -39,6 +31,14 @@ const routes = createBrowserRouter([
         element: (
           <div className="container">
             <Projects />
+          </div>
+        ),
+      },
+      {
+        path: "/blog",
+        element: (
+          <div className="container">
+            <Blog />
           </div>
         ),
       },
