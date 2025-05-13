@@ -1,4 +1,5 @@
 .banner-container {
+  position: relative;
   height: 50vh;
   width: 100%;
   display: flex;
@@ -8,9 +9,24 @@
   background-color: #333;
   color: white;
 
+  .banner-header {
+    position: relative;
+    z-index: 5;
+  }
+
   .banner-subtext {
     font-size: 1.1rem;
     width: 32rem;
     text-align: center;
+    z-index: 5;
+  }
+
+  .banner-scene {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 4;
   }
 }
