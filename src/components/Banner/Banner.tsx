@@ -1,26 +1,24 @@
 import "./Banner.scss";
-import { ReactElement, useEffect, useRef } from "react";
-// import * as THREE from "three";
+import { ReactElement } from "react";
 
-function Banner(): ReactElement {
-  const mountRef = useRef<HTMLDivElement>(null);
+export interface BannerProps {
+  title?: string;
+  subtext?: string;
+  backgroundColor?: string;
+}
 
-  useEffect(() => {
-    if (!mountRef.current) return;
-
-    return (): void => {};
-  }, []);
-
+function Banner({
+  title,
+  subtext,
+  backgroundColor,
+}: BannerProps): ReactElement {
   return (
-    <div className="banner-container">
-      <h1 className="banner-header">Jareem E. Hoff</h1>
-      <p className="banner-subtext">
-        Hi, I'm a professional <span>Fullstack Software Engineer</span> with
-        over 8 years of experience crafting digital experiences that make a
-        difference. I'm passionate about turning complex problems into elegant,
-        user-friendly solutions
-      </p>
-      {/* <div className="banner-scene" ref={mountRef}></div> */}
+    <div
+      className="banner-container"
+      style={{ backgroundColor: backgroundColor ? backgroundColor : "" }}
+    >
+      {title && <h1 className="banner-header">{title}</h1>}
+      <p className="banner-subtext">{subtext && subtext}</p>
     </div>
   );
 }

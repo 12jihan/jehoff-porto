@@ -7,6 +7,9 @@ import "./Home.scss";
 import { ReactElement } from "react";
 
 export default function Home(): ReactElement {
+  const introText: string =
+    "Hi, I'm a professional FULLSTACK SOFTWARE ENGINEER with over 9 years experience crafting digital experiences that make a difference. I'm passionate about turning complex problems into elegant, user-friendly solutions.";
+
   function limitString(text: string, maxLength: number): string {
     let shortened: string = "";
     if (text.length >= maxLength) {
@@ -19,7 +22,11 @@ export default function Home(): ReactElement {
 
   return (
     <>
-      <Banner />
+      <Banner
+        title={"Jareem E. Hoff"}
+        subtext={introText}
+        backgroundColor="#111"
+      />
       <TechnologiesList />
       <section className="home-container">
         <div className="header-container">
