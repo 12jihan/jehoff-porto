@@ -44,11 +44,7 @@ const routes = createBrowserRouter([
       },
       {
         path: "/contact",
-        element: (
-          <div className="container">
-            <ContactPage />
-          </div>
-        ),
+        element: <ContactPage />,
       },
     ],
   },

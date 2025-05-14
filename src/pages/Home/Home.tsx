@@ -51,7 +51,10 @@ export default function Home(): ReactElement {
 
                       <div className="badge-group-h">
                         {job.tech.map(
-                          (tech: string, index: number): JSX.Element | null => {
+                          (
+                            tech: string,
+                            index: number,
+                          ): ReactElement | null => {
                             return (
                               <span className="badge" key={index}>
                                 {tech}

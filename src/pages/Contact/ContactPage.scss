@@ -1,4 +1,13 @@
-.__form_wrapper {
+// .__form_wrapper {
+//   display: flex;
+//   flex-direction: column;
+// }
+
+.contact-page-container {
+  width: 100%;
+  margin: auto;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }

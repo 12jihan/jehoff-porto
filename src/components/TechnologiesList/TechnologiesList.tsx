@@ -7,27 +7,27 @@ import {
   faNodeJs,
 } from "@fortawesome/free-brands-svg-icons";
 import { faReact } from "@fortawesome/free-brands-svg-icons/faReact";
-import { iconName } from "@fortawesome/free-solid-svg-icons/faEnvelopeSquare";
+// import { iconName } from "@fortawesome/free-solid-svg-icons/faEnvelopeSquare";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ReactElement } from "react";
 
 export default function TechnologiesList(): ReactElement {
   const iconSize: SizeProp | undefined = undefined;
   // const iconSize: SizeProp | undefined = "5x";
-  const techList: unknown[] = [
-    {
-      name: "Angular",
-      color: "red",
-      icon: faAngular,
-    },
-  ];
+  // const techList: unknown[] = [
+  //   {
+  //     name: "Angular",
+  //     color: "red",
+  //     icon: faAngular,
+  //   },
+  // ];
 
   return (
     <>
-      <section className="container">
-        <span className="tech-header">
+      <section className="home-container">
+        <div className="header-container">
           <h2>Technologies</h2>
-        </span>
+        </div>
         <div className="tech-list">
           <div className="tech-item">
             <div className="tech-icon">
