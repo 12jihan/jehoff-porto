@@ -1,10 +1,32 @@
-.job-container {
-  border-left: 3px solid black;
-  list-style: none;
-}
+.resume-container {
+  width: auto;
+  max-width: 48rem;
+  margin-inline: auto;
+  padding-inline: 1rem;
 
-.jobs-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+  .job-wrapper {
+    padding-bottom: 1.8rem;
+    margin-bottom: 1.8rem;
+    border-bottom: 2px dotted black;
+
+    .job-header-group {
+      margin-bottom: 0.5rem;
+    }
+
+    li {
+      list-style-position: outside;
+      margin-left: 2rem;
+    }
+
+    .job-name {
+      font-size: 1.6rem;
+      font-weight: 700;
+    }
+
+    .job-header-group {
+      * {
+        margin: 0;
+      }
+    }
+  }
 }
