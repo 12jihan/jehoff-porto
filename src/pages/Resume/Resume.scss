@@ -6,8 +6,8 @@
 
   .job-wrapper {
     padding-bottom: 1.8rem;
-    margin-bottom: 1.8rem;
-    border-bottom: 2px dotted black;
+    // margin-bottom: 1.8rem;
+    border-bottom: 2px dotted #5b46e5;
 
     .job-header-group {
       margin-bottom: 0.5rem;
@@ -28,5 +28,90 @@
         margin: 0;
       }
     }
+  }
+}
+
+.jobs-wrapper {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.job-container {
+  padding: 0.4rem 2rem;
+  border: 2px solid #666;
+  border-radius: 6px;
+  height: 50rem;
+  overflow-y: scroll;
+  box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.3);
+  scrollbar-width: thin;
+  scrollbar-color: #666 transparent;
+}
+
+.badge {
+  padding: 0.1rem 0.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #5b46e5;
+  background-color: #e0e7ff;
+  border: 1px solid #e0e7ff;
+  border-radius: 3px;
+}
+
+.badge-group-h {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.8rem;
+  overflow-x: hidden;
+}
+
+.jobs-header {
+  background-color: #d9d3ff;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  padding: 0.6rem;
+  border-radius: 6px;
+
+  .job-status {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    p {
+      margin: 0;
+      margin-right: 0.6rem;
+    }
+  }
+
+  .job-download-resume {
+    color: white;
+    background-color: #5b46e5;
+    padding: 0.2rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+    p {
+      margin: 0;
+      b {
+        margin-right: 0.2rem;
+      }
+    }
+    svg {
+      margin-left: 0.5rem;
+    }
+    // &:hover {
+    // }
   }
 }
