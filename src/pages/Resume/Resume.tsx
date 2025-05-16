@@ -4,10 +4,12 @@ import { ReactElement } from "react";
 import { Job } from "../../interfaces/Jobs/Job";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons/faCheckCircle";
-import { faArrowDownShortWide } from "@fortawesome/free-solid-svg-icons";
 import { faArrowDownLong } from "@fortawesome/free-solid-svg-icons/faArrowDownLong";
+import { faXmarkCircle } from "@fortawesome/free-solid-svg-icons";
 
 function Resume(): ReactElement {
+  const available: boolean = true;
+
   return (
     <>
       <section className="resume-container">
@@ -18,12 +20,13 @@ function Resume(): ReactElement {
           <div className="jobs-header">
             <div className="header-item job-status">
               <p>
-                <b>WORK STATUS:</b> <u>AVAILABLE</u>
+                <b>WORK STATUS:</b>{" "}
+                {available ? <u>AVAILABLE</u> : <u>UNAVAILABLE</u>}
               </p>
               <FontAwesomeIcon
-                icon={faCheckCircle}
-                color="#87cf55"
-                enableBackground="true"
+                icon={available ? faCheckCircle : faXmarkCircle}
+                color={available ? "#22cc11" : "#bb4444"}
+                // enableBackground="true"
                 size="1x"
               />
             </div>
