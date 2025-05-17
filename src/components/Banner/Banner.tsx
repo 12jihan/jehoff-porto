@@ -1,7 +1,6 @@
+import ParticleStars from "../Three/ParticleStars/ParticleStars";
 import "./Banner.scss";
-import { ReactElement, useEffect, useRef } from "react";
-import * as THREE from "three";
-import GridRunner from "../Three/GridRunner/GridRunner";
+import { ReactElement } from "react";
 
 export interface BannerProps {
   title?: string;
@@ -19,10 +18,12 @@ function Banner({
       className="banner-container"
       style={{ backgroundColor: backgroundColor ? backgroundColor : "" }}
     >
-      {title && <h1 className="banner-header">{title}</h1>}
-      <p className="banner-subtext">{subtext && subtext}</p>
-      <GridRunner />
-    </div>);
+      {/* {title && <h1 className="banner-header">{title}</h1>} */}
+      {/* <p className="banner-subtext">{subtext && subtext}</p> */}
+      <ParticleStars />
+      {/* <GridRunner /> */}
+    </div>
+  );
 }
 
 export default Banner;
