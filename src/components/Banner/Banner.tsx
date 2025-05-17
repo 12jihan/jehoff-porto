@@ -1,5 +1,5 @@
 import "./Banner.scss";
-import { ReactElement } from "react";
+import { ReactElement, useRef } from "react";
 
 export interface BannerProps {
   title?: string;
@@ -12,6 +12,8 @@ function Banner({
   subtext,
   backgroundColor,
 }: BannerProps): ReactElement {
+  const mounted = useRef(null);
+
   return (
     <div
       className="banner-container"
@@ -19,6 +21,7 @@ function Banner({
     >
       {title && <h1 className="banner-header">{title}</h1>}
       <p className="banner-subtext">{subtext && subtext}</p>
+      <div className="threejs-banner" ref={mounted}></div>
     </div>
   );
 }
