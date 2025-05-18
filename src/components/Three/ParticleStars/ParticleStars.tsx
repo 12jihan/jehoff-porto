@@ -21,12 +21,12 @@ function ParticleStars(): ReactElement {
 
     camera.position.set(0, 0, 2);
 
-    const torusGeometry = new THREE.SphereGeometry();
-    const torusMats: THREE.PointsMaterial = new THREE.PointsMaterial({
-      size: 0.005,
-      color: 0xffffff,
-    });
-    const torus = new THREE.Points(torusGeometry, torusMats);
+    // const torusGeometry = new THREE.SphereGeometry();
+    // const torusMats: THREE.PointsMaterial = new THREE.PointsMaterial({
+    //   size: 0.005,
+    //   color: 0xffffff,
+    // });
+    // const torus = new THREE.Points(torusGeometry, torusMats);
 
     const particlesCount: number = 5000;
     const posArray: Float32Array = new Float32Array(particlesCount * 3);
@@ -69,6 +69,7 @@ function ParticleStars(): ReactElement {
       renderer.setSize(mountNode.clientWidth, mountNode.clientHeight);
     };
     window.addEventListener("resize", handleResize);
+
     return (): void => {
       if (mountNode) {
         mountNode.removeChild(renderer.domElement);
