@@ -1,6 +1,7 @@
 // import GridRunner from "../Three/GridRunner/GridRunner";
 // import ParticleStars from "../Three/ParticleStars/ParticleStars";
 // import ParticleWaves from "../Three/ParticleWaves/ParticleWaves";
+import ParticleShader from "../Three/ParticleShader/ParticleShader";
 import "./Banner.scss";
 import { ReactElement } from "react";
 
@@ -25,6 +26,7 @@ function Banner({
       {/* <ParticleStars /> */}
       {/* <GridRunner /> */}
       {/* <ParticleWaves /> */}
+      <ParticleShader />
     </div>
   );
 }
