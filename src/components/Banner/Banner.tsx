@@ -1,7 +1,7 @@
 // import GridRunner from "../Three/GridRunner/GridRunner";
 // import ParticleStars from "../Three/ParticleStars/ParticleStars";
-// import ParticleWaves from "../Three/ParticleWaves/ParticleWaves";
-import ParticleShader from "../Three/ParticleShader/ParticleShader";
+import ParticleWaves from "../Three/ParticleWaves/ParticleWaves";
+// import ParticleShader from "../Three/ParticleShader/ParticleShader";
 import "./Banner.scss";
 import { ReactElement } from "react";
 
@@ -12,8 +12,8 @@ export interface BannerProps {
 }
 
 function Banner({
-  // title,
-  // subtext,
+  title,
+  subtext,
   backgroundColor,
 }: BannerProps): ReactElement {
   return (
@@ -21,12 +21,12 @@ function Banner({
       className="banner-container"
       style={{ backgroundColor: backgroundColor ? backgroundColor : "" }}
     >
-      {/* {title && <h1 className="banner-header">{title}</h1>} */}
-      {/* <p className="banner-subtext">{subtext && subtext}</p> */}
+      {title && <h1 className="banner-header">{title}</h1>}
+      <p className="banner-subtext">{subtext && subtext}</p>
       {/* <ParticleStars /> */}
       {/* <GridRunner /> */}
-      {/* <ParticleWaves /> */}
-      <ParticleShader />
+      <ParticleWaves />
+      {/* <ParticleShader /> */}
     </div>
   );
 }

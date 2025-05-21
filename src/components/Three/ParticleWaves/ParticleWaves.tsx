@@ -35,14 +35,15 @@ function ParticleWaves(): ReactElement {
     const aspectRatio = width / height;
     const viewWidth = 20; // Horizontal view width in 3D units
     const viewHeight = viewWidth / aspectRatio;
-    const particleCount = 3000;
+    const particleCount = 10000;
     const particles = new THREE.BufferGeometry();
     const positions = new Float32Array(particleCount * 3);
     const originalPositions = new Float32Array(particleCount * 3);
     const velocities = new Float32Array(particleCount * 2); // x, y velocities
     for (let i = 0; i < particleCount; i++) {
       positions[i * 3] = (Math.random() * -viewWidth) / 2 - viewWidth / 4; // x (left side)
-      positions[i * 3 + 1] = (Math.random() - 0.5) * viewHeight; // y (spread vertically)
+      positions[i * 3 + 1] = Math.random() - 0.1; // y (spread vertically)
+      // positions[i * 3 + 1] = (Math.random() - 0.5) * viewHeight; // y (spread vertically)
       positions[i * 3 + 2] = 0; // z (depth)
 
       // Store original positions for swarming behavior
@@ -56,10 +57,10 @@ function ParticleWaves(): ReactElement {
     }
     particles.setAttribute("position", new THREE.BufferAttribute(positions, 3));
     const particleMat = new THREE.PointsMaterial({
-      color: 0xff00ff,
-      size: 0.05,
+      color: 0x4400ff,
+      size: 0.015,
       transparent: true,
-      opacity: 0.8,
+      opacity: 0.9,
       blending: THREE.AdditiveBlending,
     });
     const particleMesh = new THREE.Points(particles, particleMat);
@@ -69,8 +70,8 @@ function ParticleWaves(): ReactElement {
 
     // Mouse tracking
     const mouse: THREE.Vector2 = new THREE.Vector2(-1000, -1000);
-    const mouseRadius = 0.3;
-    const mouseStrength = 1.5;
+    const mouseRadius = 0.1;
+    const mouseStrength = 0.5;
 
     // Track mouse position
     const handleMouseMove = (event: any) => {
@@ -96,8 +97,8 @@ function ParticleWaves(): ReactElement {
     window.addEventListener("mousemove", handleMouseMove);
 
     // Swarm parameters
-    const swarmRadius = 0.5;
-    const swarmStrength = 0.02;
+    // const swarmRadius = 0.5;
+    // const swarmStrength = 0.02;
     const returnStrength = 0.01;
     const clock = new THREE.Clock();
     let animationId: number;
@@ -139,8 +140,8 @@ function ParticleWaves(): ReactElement {
           const angle = Math.atan2(dy, dx);
 
           // Push away from mouse with circular motion
-          positions[i * 3] -= Math.cos(angle + Math.PI / 2) * force * 0.2;
-          positions[i * 3 + 1] -= Math.sin(angle + Math.PI / 2) * force * 0.2;
+          positions[i * 3] -= Math.cos(angle + Math.PI / 2) * force * 0.1;
+          positions[i * 3 + 1] -= Math.sin(angle + Math.PI / 2) * force * 0.1;
 
           // Add some velocity changes for persistence
           velocities[i * 2] -= Math.cos(angle) * force * 0.05;
@@ -148,28 +149,28 @@ function ParticleWaves(): ReactElement {
         }
 
         // Swarm behavior - particles affect each other (optimized)
-        if (i % 5 === 0) {
-          // Only check every 5th particle as the influencer
-          for (let j = 0; j < particleCount; j += 50) {
-            // Check every 50th particle
-            if (i !== j) {
-              const otherX = positions[j * 3];
-              const otherY = positions[j * 3 + 1];
-
-              const dxSwarm = otherX - particleX;
-              const dySwarm = otherY - particleY;
-              const distSwarm = Math.sqrt(
-                dxSwarm * dxSwarm + dySwarm * dySwarm,
-              );
-
-              if (distSwarm < swarmRadius && distSwarm > 0.01) {
-                // Attraction to nearby particles
-                positions[i * 3] += (dxSwarm / distSwarm) * swarmStrength;
-                positions[i * 3 + 1] += (dySwarm / distSwarm) * swarmStrength;
-              }
-            }
-          }
-        }
+        // if (i % 5 === 0) {
+        //   // Only check every 5th particle as the influencer
+        //   for (let j = 0; j < particleCount; j += 50) {
+        //     // Check every 50th particle
+        //     if (i !== j) {
+        //       const otherX = positions[j * 3];
+        //       const otherY = positions[j * 3 + 1];
+        //
+        //       const dxSwarm = otherX - particleX;
+        //       const dySwarm = otherY - particleY;
+        //       const distSwarm = Math.sqrt(
+        //         dxSwarm * dxSwarm + dySwarm * dySwarm,
+        //       );
+        //
+        //       if (distSwarm < swarmRadius && distSwarm > 0.01) {
+        //         // Attraction to nearby particles
+        //         positions[i * 3] += (dxSwarm / distSwarm) * swarmStrength;
+        //         positions[i * 3 + 1] += (dySwarm / distSwarm) * swarmStrength;
+        //       }
+        //     }
+        //   }
+        // }
         // Add some wave-like motion
         positions[i * 3 + 1] +=
           Math.sin(time * 2 + positions[i * 3] * 0.5) * 0.01;
