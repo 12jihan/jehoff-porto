@@ -1,7 +1,8 @@
 // import GridRunner from "../Three/GridRunner/GridRunner";
 // import ParticleStars from "../Three/ParticleStars/ParticleStars";
-import ParticleWaves from "../Three/ParticleWaves/ParticleWaves";
+// import ParticleWaves from "../Three/ParticleWaves/ParticleWaves";
 // import ParticleShader from "../Three/ParticleShader/ParticleShader";
+import MovingDotsBG from "../MovingDotsBG/MovingDotsBG";
 import "./Banner.scss";
 import { ReactElement } from "react";
 
@@ -25,8 +26,9 @@ function Banner({
       <p className="banner-subtext">{subtext && subtext}</p>
       {/* <ParticleStars /> */}
       {/* <GridRunner /> */}
-      <ParticleWaves />
+      {/* <ParticleWaves /> */}
       {/* <ParticleShader /> */}
+      <MovingDotsBG />
     </div>
   );
 }

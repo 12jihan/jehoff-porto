@@ -25,7 +25,7 @@ export default function Home(): ReactElement {
       <Banner
         title={"Jareem E. Hoff"}
         subtext={introText}
-        backgroundColor="#111"
+        backgroundColor="#0d0221"
       />
       <TechnologiesList />
       <section className="home-container">
@@ -51,7 +51,7 @@ export default function Home(): ReactElement {
                           .slice(0, 4)
                           .map((bullet: string): ReactElement => {
                             return (
-                              <li key={bullet}>{limitString(bullet, 100)}</li>
+                              <li key={bullet}>{limitString(bullet, 80)}</li>
                             );
                           })}
                       </ul>

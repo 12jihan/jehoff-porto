@@ -3,7 +3,7 @@ import { ReactElement } from "react";
 import { useNavigate } from "react-router";
 import { NavigateFunction } from "react-router";
 
-export default function (): ReactElement {
+export default function Contact(): ReactElement {
   const nav: NavigateFunction = useNavigate();
   const goToContact = (): void => {
     nav("/contact");

@@ -10,18 +10,14 @@
 
 html {
   background-image:
-    radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 0),
-    radial-gradient(circle, #221447, #0d0221);
+    // radial-gradient(rgba(255, 255, 255, 0.09) 2px, transparent 0),
+    radial-gradient(circle, #0d0021, #0d0221);
   background-size:
     50px 50px,
     100% 100%;
   background-position:
     0 0,
     0 0;
-
-  // radial-gradient(#221447 5%, #0d0221);
-  // font-size: 16px;
-  // scroll-behavior: smooth;
 }
 
 body {

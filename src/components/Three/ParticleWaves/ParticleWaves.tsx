@@ -1,87 +1,175 @@
-import "./ParticleWaves.scss";
-import * as THREE from "three";
+import * as THREE from "three"; // Corrected this line
 import { ReactElement, RefObject, useEffect, useRef } from "react";
+import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer.js";
+import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
+import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass.js";
+
+// Assuming you have a SCSS file for basic container styling
+// import "./ParticleWaves.scss";
 
 function ParticleWaves(): ReactElement {
   const mountRef: RefObject<HTMLDivElement | null> = useRef(null);
 
+  // Function to create a glowing halo texture for particles
+  const createParticleTexture = (): THREE.Texture => {
+    const canvas = document.createElement("canvas");
+    const context = canvas.getContext("2d");
+    const size = 128; // Texture size
+    canvas.width = size;
+    canvas.height = size;
+
+    if (!context) {
+      console.error("Failed to get 2D context for particle texture");
+      // Fallback to a simple texture or handle error
+      const fallbackTexture = new THREE.DataTexture(
+        new Uint8Array([255, 255, 255, 255]),
+        1,
+        1,
+        THREE.RGBAFormat,
+      );
+      fallbackTexture.needsUpdate = true;
+      return fallbackTexture;
+    }
+
+    // Create a radial gradient (center white, fading to transparent)
+    const gradient = context.createRadialGradient(
+      size / 2, // x0
+      size / 2, // y0
+      0, // r0 (inner radius)
+      size / 2, // x1
+      size / 2, // y1
+      size / 2, // r1 (outer radius)
+    );
+    gradient.addColorStop(0, "rgba(255, 255, 255, 1)"); // Center (fully opaque white)
+    gradient.addColorStop(0.2, "rgba(200, 200, 255, 0.8)"); // Inner glow (slightly blueish, less opaque)
+    gradient.addColorStop(0.5, "rgba(150, 100, 255, 0.3)"); // Mid glow (more color, more transparent)
+    gradient.addColorStop(1, "rgba(100, 0, 255, 0)"); // Edge (fully transparent)
+
+    context.fillStyle = gradient;
+    context.fillRect(0, 0, size, size);
+
+    const texture = new THREE.CanvasTexture(canvas);
+    texture.needsUpdate = true; // Ensure the texture is updated
+    return texture;
+  };
+
   useEffect((): (() => void) | undefined => {
     const mountNode: HTMLDivElement | null = mountRef.current;
     if (!mountNode) return;
+
     // Clear any existing canvas
     while (mountNode.firstChild) {
       mountNode.removeChild(mountNode.firstChild);
     }
 
-    // Get container dimensions
-    const width = mountNode.clientWidth;
-    const height = mountNode.clientHeight;
+    const getWidth = () => mountNode.clientWidth;
+    const getHeight = () => mountNode.clientHeight;
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
-      95,
-      mountNode.clientWidth / mountNode.clientHeight,
+      75, // Adjusted FOV slightly
+      getWidth() / getHeight(),
       0.1,
-      60,
+      100,
     );
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(width, height);
-    renderer.setClearColor(new THREE.Color("#21282a"), 1);
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(getWidth(), getHeight());
+    renderer.setClearColor(new THREE.Color("black"), 1); // Set background to black
     mountNode.appendChild(renderer.domElement);
 
-    camera.position.set(0, 0, 2);
+    camera.position.set(0, 0, 3); // Adjusted camera position
     camera.lookAt(0, 0, 0);
 
-    const aspectRatio = width / height;
-    const viewWidth = 20; // Horizontal view width in 3D units
+    const aspectRatio = getWidth() / getHeight();
+    const viewWidth = 20;
     const viewHeight = viewWidth / aspectRatio;
-    const particleCount = 10000;
-    const particles = new THREE.BufferGeometry();
+
+    // --- Grid Helper Setup ---
+    const grid = new THREE.GridHelper(viewWidth, 30, "#222222", "#111111"); // Darkened grid for black background
+    if (grid.material instanceof THREE.Material) {
+      grid.material.depthTest = false;
+      grid.material.depthWrite = false;
+      grid.material.transparent = true;
+      grid.material.opacity = 0.5; // Make grid very subtle on black
+    }
+    grid.rotateX(THREE.MathUtils.degToRad(90));
+    grid.renderOrder = 0;
+    scene.add(grid);
+
+    // --- Particle System Setup ---
+    const particleCount = 2000; // Slightly reduced count for performance with textures
+    const particlesGeometry = new THREE.BufferGeometry();
     const positions = new Float32Array(particleCount * 3);
     const originalPositions = new Float32Array(particleCount * 3);
-    const velocities = new Float32Array(particleCount * 2); // x, y velocities
+    const velocities = new Float32Array(particleCount * 2);
+
     for (let i = 0; i < particleCount; i++) {
-      positions[i * 3] = (Math.random() * -viewWidth) / 2 - viewWidth / 4; // x (left side)
-      positions[i * 3 + 1] = Math.random() - 0.1; // y (spread vertically)
-      // positions[i * 3 + 1] = (Math.random() - 0.5) * viewHeight; // y (spread vertically)
-      positions[i * 3 + 2] = 0; // z (depth)
+      const i3 = i * 3;
+      const i2 = i * 2;
+      positions[i3] = (Math.random() - 0.5) * viewWidth;
+      positions[i3 + 1] = (Math.random() - 0.5) * viewHeight * 0.7;
+      positions[i3 + 2] = (Math.random() - 0.5) * 0.2;
 
-      // Store original positions for swarming behavior
-      originalPositions[i * 3] = positions[i * 3];
-      originalPositions[i * 3 + 1] = positions[i * 3 + 1];
-      originalPositions[i * 3 + 2] = 0;
+      originalPositions[i3] = positions[i3];
+      originalPositions[i3 + 1] = positions[i3 + 1];
+      originalPositions[i3 + 2] = positions[i3 + 2];
 
-      // Initial velocities
-      velocities[i * 2] = 0.03 + Math.random() * 0.02; // x velocity
-      velocities[i * 2 + 1] = (Math.random() - 0.5) * 0.01; // y velocity
+      velocities[i2] =
+        (Math.random() * 0.015 + 0.005) * (Math.random() < 0.5 ? 1 : -1);
+      velocities[i2 + 1] = (Math.random() - 0.5) * 0.004;
     }
-    particles.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+    particlesGeometry.setAttribute(
+      "position",
+      new THREE.BufferAttribute(positions, 3),
+    );
+
+    const particleTexture = createParticleTexture(); // Create the halo texture
+
     const particleMat = new THREE.PointsMaterial({
-      color: 0x4400ff,
-      size: 0.015,
+      map: particleTexture, // Apply the texture
+      // color: 0xffffff, // Set to white if texture provides color, or tint with this
+      size: 0.1, // Adjust size, texture affects perceived size
       transparent: true,
       opacity: 0.9,
       blending: THREE.AdditiveBlending,
+      depthTest: false, // Keep these for layering
+      depthWrite: false,
+      // alphaTest: 0.01, // May need this if edges of texture are not perfectly transparent
+      sizeAttenuation: true, // Points will be smaller further away
     });
-    const particleMesh = new THREE.Points(particles, particleMat);
 
-    // Scenes to add:
+    const particleMesh = new THREE.Points(particlesGeometry, particleMat);
+    particleMesh.renderOrder = 1;
     scene.add(particleMesh);
 
-    // Mouse tracking
-    const mouse: THREE.Vector2 = new THREE.Vector2(-1000, -1000);
-    const mouseRadius = 0.1;
-    const mouseStrength = 0.5;
+    // --- Post-processing Setup (EffectComposer and UnrealBloomPass) ---
+    const renderScene = new RenderPass(scene, camera);
 
-    // Track mouse position
-    const handleMouseMove = (event: any) => {
+    const bloomPass = new UnrealBloomPass(
+      new THREE.Vector2(getWidth(), getHeight()),
+      1.8, // strength - might need to adjust with textured particles
+      0.2, // radius
+      0.06, // threshold - might need to adjust
+    );
+    // Fine-tune bloom:
+    // bloomPass.strength = 0.8;
+    // bloomPass.radius = 0.5;
+    // bloomPass.threshold = 0.6;
+
+    const composer = new EffectComposer(renderer);
+    composer.addPass(renderScene);
+    composer.addPass(bloomPass);
+
+    // --- Mouse Interaction ---
+    const mouse = new THREE.Vector2(-1000, -1000);
+    const mouseRadius = 0.25; // Adjusted
+    const mouseStrength = 0.15; // Adjusted
+
+    const handleMouseMove = (event: MouseEvent) => {
       const rect = mountNode.getBoundingClientRect();
-      // Convert to normalized device coordinates within container
-      const x = ((event.clientX - rect.left) / width) * 2 - 1;
-      const y = -((event.clientY - rect.top) / height) * 2 + 1;
-
-      // Convert to world coordinates
-      const vector = new THREE.Vector3(x, y, 0);
+      const x = ((event.clientX - rect.left) / getWidth()) * 2 - 1;
+      const y = -((event.clientY - rect.top) / getHeight()) * 2 + 1;
+      const vector = new THREE.Vector3(x, y, 0.5);
       vector.unproject(camera);
       const dir = vector.sub(camera.position).normalize();
       const distance = -camera.position.z / dir.z;
@@ -89,141 +177,129 @@ function ParticleWaves(): ReactElement {
       mouse.y = camera.position.y + dir.y * distance;
     };
 
-    mountNode.addEventListener("mouseleave", () => {
-      // Move mouse far away when cursor leaves container
+    const handleMouseLeave = () => {
       mouse.x = -1000;
       mouse.y = -1000;
-    });
-    window.addEventListener("mousemove", handleMouseMove);
+    };
 
-    // Swarm parameters
-    // const swarmRadius = 0.5;
-    // const swarmStrength = 0.02;
-    const returnStrength = 0.01;
+    mountNode.addEventListener("mousemove", handleMouseMove);
+    mountNode.addEventListener("mouseleave", handleMouseLeave);
+
+    // --- Animation Loop ---
     const clock = new THREE.Clock();
+    const returnStrength = 0.02;
     let animationId: number;
+
     const animate = () => {
       animationId = requestAnimationFrame(animate);
+      const elapsedTime = clock.getElapsedTime();
+      const currentPositions = particlesGeometry.attributes.position
+        .array as Float32Array;
 
-      // const delta = clock.getDelta();
-      const time = clock.getElapsedTime();
-
-      const positions = particles.attributes.position.array;
-
-      // Update each particle
       for (let i = 0; i < particleCount; i++) {
-        // Move particles from left to right
-        positions[i * 3] += velocities[i * 2];
-        positions[i * 3 + 1] += velocities[i * 2 + 1];
+        const i3 = i * 3;
+        const i2 = i * 2;
 
-        // Reset particles that go off-screen
-        if (positions[i * 3] > viewWidth / 2) {
-          positions[i * 3] = -viewWidth / 2;
-          positions[i * 3 + 1] = (Math.random() - 0.5) * viewHeight;
-          velocities[i * 2] = 0.03 + Math.random() * 0.02;
-          velocities[i * 2 + 1] = (Math.random() - 0.5) * 0.01;
-        }
+        currentPositions[i3] += velocities[i2];
+        currentPositions[i3 + 1] += velocities[i2 + 1];
 
-        // Mouse interaction
-        const particleX = positions[i * 3];
-        const particleY = positions[i * 3 + 1];
+        const particleX = currentPositions[i3];
+        const particleY = currentPositions[i3 + 1];
+        const dxMouse = mouse.x - particleX;
+        const dyMouse = mouse.y - particleY;
+        const distToMouse = Math.sqrt(dxMouse * dxMouse + dyMouse * dyMouse);
 
-        // Calculate distance to mouse
-        const dx = mouse.x - particleX;
-        const dy = mouse.y - particleY;
-        const distToMouse = Math.sqrt(dx * dx + dy * dy);
-
-        // Apply repulsion if within radius
         if (distToMouse < mouseRadius) {
           const force =
             ((mouseRadius - distToMouse) / mouseRadius) * mouseStrength;
-          const angle = Math.atan2(dy, dx);
-
-          // Push away from mouse with circular motion
-          positions[i * 3] -= Math.cos(angle + Math.PI / 2) * force * 0.1;
-          positions[i * 3 + 1] -= Math.sin(angle + Math.PI / 2) * force * 0.1;
-
-          // Add some velocity changes for persistence
-          velocities[i * 2] -= Math.cos(angle) * force * 0.05;
-          velocities[i * 2 + 1] -= Math.sin(angle) * force * 0.05;
+          const angle = Math.atan2(dyMouse, dxMouse);
+          currentPositions[i3] -= Math.cos(angle) * force;
+          currentPositions[i3 + 1] -= Math.sin(angle) * force;
+          velocities[i2] -= Math.cos(angle) * force * 0.03;
+          velocities[i2 + 1] -= Math.sin(angle) * force * 0.03;
         }
 
-        // Swarm behavior - particles affect each other (optimized)
-        // if (i % 5 === 0) {
-        //   // Only check every 5th particle as the influencer
-        //   for (let j = 0; j < particleCount; j += 50) {
-        //     // Check every 50th particle
-        //     if (i !== j) {
-        //       const otherX = positions[j * 3];
-        //       const otherY = positions[j * 3 + 1];
-        //
-        //       const dxSwarm = otherX - particleX;
-        //       const dySwarm = otherY - particleY;
-        //       const distSwarm = Math.sqrt(
-        //         dxSwarm * dxSwarm + dySwarm * dySwarm,
-        //       );
-        //
-        //       if (distSwarm < swarmRadius && distSwarm > 0.01) {
-        //         // Attraction to nearby particles
-        //         positions[i * 3] += (dxSwarm / distSwarm) * swarmStrength;
-        //         positions[i * 3 + 1] += (dySwarm / distSwarm) * swarmStrength;
-        //       }
-        //     }
-        //   }
-        // }
-        // Add some wave-like motion
-        positions[i * 3 + 1] +=
-          Math.sin(time * 2 + positions[i * 3] * 0.5) * 0.01;
+        currentPositions[i3 + 1] +=
+          Math.sin(elapsedTime * 1.1 + currentPositions[i3] * 0.2) * 0.006;
 
-        // Gradually return to original path (y-coordinate only)
         const targetY =
-          originalPositions[i * 3 + 1] + Math.sin(time + i * 0.1) * 0.5;
-        positions[i * 3 + 1] +=
-          (targetY - positions[i * 3 + 1]) * returnStrength;
+          originalPositions[i3 + 1] +
+          Math.sin(elapsedTime * 0.7 + i * 0.15) * 0.2;
+        currentPositions[i3 + 1] +=
+          (targetY - currentPositions[i3 + 1]) * returnStrength;
+
+        // Boundary conditions
+        const wrapOffset = 1.5; // How far off screen before wrapping
+        if (currentPositions[i3] > viewWidth / 2 + wrapOffset) {
+          currentPositions[i3] = -viewWidth / 2 - wrapOffset;
+          currentPositions[i3 + 1] = (Math.random() - 0.5) * viewHeight * 0.7;
+          velocities[i2] = Math.random() * 0.015 + 0.005;
+        } else if (currentPositions[i3] < -viewWidth / 2 - wrapOffset) {
+          currentPositions[i3] = viewWidth / 2 + wrapOffset;
+          currentPositions[i3 + 1] = (Math.random() - 0.5) * viewHeight * 0.7;
+          velocities[i2] = -(Math.random() * 0.015 + 0.005);
+        }
+        if (currentPositions[i3 + 1] > viewHeight / 2 + wrapOffset * 0.7) {
+          currentPositions[i3 + 1] = -viewHeight / 2 - wrapOffset * 0.7;
+        } else if (
+          currentPositions[i3 + 1] <
+          -viewHeight / 2 - wrapOffset * 0.7
+        ) {
+          currentPositions[i3 + 1] = viewHeight / 2 + wrapOffset * 0.7;
+        }
       }
-      // Mark positions for update
-      particles.attributes.position.needsUpdate = true;
-      renderer.render(scene, camera);
+      particlesGeometry.attributes.position.needsUpdate = true;
+
+      composer.render();
     };
     animate();
 
-    // Handle container resize
+    // --- Handle Resize ---
     const handleResize = () => {
-      const newWidth = mountNode.clientWidth;
-      const newHeight = mountNode.clientHeight;
+      const newWidth = getWidth();
+      const newHeight = getHeight();
+
+      renderer.setSize(newWidth, newHeight);
+      composer.setSize(newWidth, newHeight);
 
       camera.aspect = newWidth / newHeight;
       camera.updateProjectionMatrix();
-      renderer.setSize(newWidth, newHeight);
     };
 
-    // Create ResizeObserver for the container
     const resizeObserver = new ResizeObserver(handleResize);
     resizeObserver.observe(mountNode);
 
+    // --- Cleanup ---
     return () => {
-      if (mountNode) {
+      cancelAnimationFrame(animationId);
+      mountNode.removeEventListener("mousemove", handleMouseMove);
+      mountNode.removeEventListener("mouseleave", handleMouseLeave);
+      resizeObserver.unobserve(mountNode);
+      if (mountNode && renderer.domElement) {
         mountNode.removeChild(renderer.domElement);
       }
 
-      window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("mouseleave", handleMouseMove);
+      // Dispose texture
+      particleTexture.dispose();
 
-      // Stop animation
-      cancelAnimationFrame(animationId);
-
-      // Dispose resources
-      particles.dispose();
+      particlesGeometry.dispose();
       particleMat.dispose();
+      if (grid.material instanceof THREE.Material) grid.material.dispose();
+      if (grid.geometry) grid.geometry.dispose();
+
       renderer.dispose();
+      scene.clear();
     };
   }, []);
 
-  return (
-    <>
-      <div className="three-scene" ref={mountRef}></div>
-    </>
-  );
+  const styles: React.CSSProperties = {
+    width: "100%",
+    height: "100vh",
+    overflow: "hidden",
+    backgroundColor: "#000000", // Set container background to black
+  };
+
+  return <div style={styles} ref={mountRef}></div>;
 }
 
 export default ParticleWaves;
