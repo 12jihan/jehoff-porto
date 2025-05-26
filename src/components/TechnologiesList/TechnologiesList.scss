@@ -7,17 +7,20 @@
   gap: 2rem;
 
   .tech-item {
-    background-color: white;
+    background-image: linear-gradient(210deg, #160240 0%, #1f035c);
+    border: 1px solid #8548cc;
+    border-radius: 5px;
     width: 8rem;
     height: 8rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-radius: 5px;
     transition: all 200ms ease-in-out;
     cursor: pointer;
+
     .tech-icon {
+      color: white;
       font-size: 5rem;
     }
     &:hover::before {
@@ -29,36 +32,37 @@
     }
 
     &:hover {
+      transform: scale(1.1);
       position: relative;
       color: white;
       // background-color: #5b46e5;
       // background-color: #f706cf;
       // z-index: 5;
-      &::after {
-        content: "";
-        z-index: -1;
-        position: absolute;
-        top: 0%;
-        left: 0%;
-        width: 100%;
-        height: 100%;
-        background-color: #f706cf;
-        border-radius: 10px;
-      }
-      &::before {
-        content: "";
-        background-color: #f706cf;
-        z-index: -1;
-        position: absolute;
-        top: -2px;
-        left: -2px;
-        background-size: 900%;
-        width: calc(100% + 4px);
-        height: calc(100% + 4px);
-        border-radius: 10px;
-        filter: blur(8px);
-        transition: all 3s ease-in-out;
-      }
+      // &::after {
+      //   content: "";
+      //   z-index: -1;
+      //   position: absolute;
+      //   top: 0%;
+      //   left: 0%;
+      //   width: 100%;
+      //   height: 100%;
+      //   background-color: #f706cf;
+      //   border-radius: 10px;
+      // }
+      // &::before {
+      //   content: "";
+      //   background-color: #f706cf;
+      //   z-index: -1;
+      //   position: absolute;
+      //   top: -2px;
+      //   left: -2px;
+      //   background-size: 900%;
+      //   width: calc(100% + 4px);
+      //   height: calc(100% + 4px);
+      //   border-radius: 10px;
+      //   filter: blur(8px);
+      //   transition: all 3s ease-in-out;
+      // }
     }
   }
 }

@@ -31,8 +31,8 @@
   h2 {
     padding-bottom: 0.4rem;
     margin-bottom: 2rem;
-    color: #2de2e6;
-    border-bottom: 0.17rem solid #2de2e6;
+    color: white;
+    // border-bottom: 0.17rem solid #2de2e6;
   }
 }
 
@@ -61,14 +61,16 @@
 }
 
 .__long-card {
-  background-color: #ffffff;
+  background-image: linear-gradient(210deg, #160240 0%, #1f035c);
+  border: 1px solid #8548cc;
+  // background-color: #ffffff;
   display: flex;
   flex-direction: row;
   height: 12rem;
   width: 100%;
   padding: 1.2rem;
   box-shadow: 0px 5px 5px 0px rgba($color: #000000, $alpha: 0.3);
-  border: 1px solid rgba($color: #000000, $alpha: 0.07);
+  // border: 1px solid rgba($color: #000000, $alpha: 0.07);
   border-radius: 5px;
 
   div {
@@ -83,13 +85,14 @@
     width: 19rem;
 
     p {
+      color: white;
       font-size: 1.1rem;
     }
 
     .job-name {
       font-size: 1.5rem;
       font-weight: 700;
-      color: rgba($color: #5b46e5, $alpha: 1);
+      color: white;
     }
 
     .job-title {
@@ -103,6 +106,7 @@
   }
 
   .__long-card-body {
+    color: white;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
