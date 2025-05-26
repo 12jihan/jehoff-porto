@@ -1,9 +1,9 @@
+import "./Home.scss";
 import Banner from "../../components/Banner/Banner";
 import Contact from "../../components/Contact/Contact";
 import TechnologiesList from "../../components/TechnologiesList/TechnologiesList";
 import experience from "../../experience";
 import { Job } from "../../interfaces/Jobs/Job";
-import "./Home.scss";
 import { ReactElement } from "react";
 
 export default function Home(): ReactElement {
