@@ -24,6 +24,11 @@ function Banner({
     >
       {title && <h1 className="banner-header">{title}</h1>}
       <p className="banner-subtext">{subtext && subtext}</p>
+      <div className="btn-grp">
+        <button type="button" className="banner-btn">
+          Get in Touch!
+        </button>
+      </div>
       {/* <ParticleStars /> */}
       {/* <GridRunner /> */}
       {/* <ParticleWaves /> */}

@@ -25,7 +25,8 @@ export default function Home(): ReactElement {
       <Banner
         title={"Jareem E. Hoff"}
         subtext={introText}
-        backgroundColor="#0d0221"
+        backgroundColor="transparent"
+        // backgroundColor="#0d0221"
       />
       <TechnologiesList />
       <section className="home-container">
