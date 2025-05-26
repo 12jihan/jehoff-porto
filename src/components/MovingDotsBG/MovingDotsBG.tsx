@@ -2,15 +2,15 @@ import "./MovingDotsBG.scss";
 import { ReactElement, useEffect, useState } from "react";
 
 function MovingDotsBG(): ReactElement {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
+  // const [isMenuOpen, setIsMenuOpen] = useState(false);
+  // const [scrollY, setScrollY] = useState(0);
   const [particles, setParticles] = useState([]);
 
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  // useEffect(() => {
+  //   const handleScroll = () => setScrollY(window.scrollY);
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => window.removeEventListener("scroll", handleScroll);
+  // }, []);
 
   useEffect(() => {
     // Generate initial particles
