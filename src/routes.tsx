@@ -28,11 +28,7 @@ const routes = createBrowserRouter([
       },
       {
         path: "/projects",
-        element: (
-          <div className="container">
-            <Projects />
-          </div>
-        ),
+        element: <Projects />,
       },
       {
         path: "/blog",
