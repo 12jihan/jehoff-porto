@@ -16,7 +16,7 @@ function ParticleShader(): ReactElement {
     const width = mountNode.clientWidth;
     const height = mountNode.clientHeight;
 
-    const scene = new THREE.Scene();
+    // const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
       95,
       mountNode.clientWidth / mountNode.clientHeight,
@@ -31,11 +31,11 @@ function ParticleShader(): ReactElement {
     camera.position.set(0, 0, 2);
     camera.lookAt(0, 0, 0);
 
-    const aspectRatio = width / height;
-    const viewWidth = 20; // Horizontal view width in 3D units
-    const viewHeight = viewWidth / aspectRatio;
+    // const aspectRatio = width / height;
+    // const viewWidth = 20; // Horizontal view width in 3D units
+    // const viewHeight = viewWidth / aspectRatio;
 
-    const clock = new THREE.Clock();
+    // const clock = new THREE.Clock();
     let animationId: number;
     const animate = () => {
       animationId = requestAnimationFrame(animate);
@@ -45,13 +45,13 @@ function ParticleShader(): ReactElement {
     animate();
 
     // Handle container resize
-    const handleResize = () => {
-      const newWidth = mountNode.clientWidth;
-      const newHeight = mountNode.clientHeight;
-
-      camera.aspect = newWidth / newHeight;
-      camera.updateProjectionMatrix();
-    };
+    // const handleResize = () => {
+    //   const newWidth = mountNode.clientWidth;
+    //   const newHeight = mountNode.clientHeight;
+    //
+    //   camera.aspect = newWidth / newHeight;
+    //   camera.updateProjectionMatrix();
+    // };
 
     return () => {
       if (mountNode) {
