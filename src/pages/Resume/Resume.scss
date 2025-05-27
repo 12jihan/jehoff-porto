@@ -48,6 +48,14 @@
   box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.3);
   scrollbar-width: thin;
   scrollbar-color: #666 transparent;
+  background-image: linear-gradient(
+    150deg,
+    #f706cf -100%,
+    #1f035c 45% 100% // #f706cf 100% 190%
+  );
+  border: 1px solid #f706cf;
+  color: white;
+  box-shadow: 0px 5px 5px 0px rgba($color: #000000, $alpha: 0.3);
 }
 
 .badge {
@@ -82,6 +90,14 @@
   margin-bottom: 0.5rem;
   padding: 0.6rem;
   border-radius: 6px;
+  background-image: linear-gradient(
+    150deg,
+    #f706cf -100%,
+    #1f035c 45% 100% // #f706cf 100% 190%
+  );
+  border: 1px solid #f706cf;
+  color: white;
+  box-shadow: 0px 5px 5px 0px rgba($color: #000000, $alpha: 0.3);
 
   .job-status {
     display: flex;
@@ -96,13 +112,18 @@
   }
 
   .job-download-resume {
-    color: white;
-    background-color: #5b46e5;
+    background-color: transparent;
+    color: #f706cf;
+    border: 1px solid #f706cf;
     padding: 0.2rem 1rem;
-    border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: all 300ms ease-in-out;
 
+    &:hover {
+      color: white;
+      background-color: #f706cf;
+    }
     p {
       margin: 0;
       b {

@@ -11,15 +11,64 @@
   color: white;
 
   .banner-header {
+    background: linear-gradient(45deg, #a65aff 0%, #160240 50%, #a65aff 100%);
+    background-size: 200% 200%;
+    background-position: 0% 50%; // Set initial position
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 0.5px #8548cc;
     position: relative;
-    z-index: 5;
+    z-index: 101;
+
+    // Smooth transition for return to original state
+    transition: background-position 1s ease-in-out;
+    will-change: background-position;
+
+    &:hover {
+      background-position: 100% 50%; // End position
+      transition: background-position 500ms ease-in-out; // Hover animation duration
+    }
   }
+
+  @keyframes headerAnimate {
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+  // .banner-header {
+  //   background: linear-gradient(45deg, #a65aff, #160240 85% 100%);
+  //   background-clip: text;
+  //   -webkit-background-clip: text;
+  //   -webkit-text-fill-color: transparent;
+  //   -webkit-text-stroke: 0.5px #8548cc;
+  //   position: relative;
+  //   z-index: 101;
+  //   // transition: all 3s ease-in-out;
+  //   &:hover {
+  //     animation: headerAnimate 3s ease-in-out infinite alternate;
+  //   }
+  //   // animation: headerAnimate 0s ease-in-out infinite;
+  // }
+  //
+  // @keyframes headerAnimate {
+  //   0% {
+  //     background: linear-gradient(45deg, #a65aff, #160240 85%);
+  //   }
+  //   100% {
+  //     background: linear-gradient(45deg, #a65aff, #160240 5%);
+  //   }
+  // }
 
   .banner-subtext {
     font-size: 1.1rem;
     width: 32rem;
     text-align: center;
-    z-index: 5;
+    z-index: 101;
   }
 
   // .banner-scene {
