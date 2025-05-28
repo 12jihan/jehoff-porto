@@ -8,15 +8,27 @@ function Navbar(): ReactElement {
       <nav className="nav-container">
         <div className="nav-grp">
           {/* Branding */}
-          <Link to="/">{"< JEHOFF />"}</Link>
+          <Link className="nav-item" to="/">
+            {"< JEHOFF />"}
+          </Link>
         </div>
         <div className="nav-grp">
           {/* Routes */}
-          <Link to="/">Home</Link>
-          <Link to="/resume">Resume</Link>
-          <Link to="/projects">Projects</Link>
-          <Link to="/blog">Blog</Link>
-          <Link to="/contact">Contact</Link>
+          <Link className="nav-item" to="/">
+            Home
+          </Link>
+          <Link className="nav-item" to="/resume">
+            Resume
+          </Link>
+          <Link className="nav-item" to="/projects">
+            Projects
+          </Link>
+          <Link className="nav-item" to="/blog">
+            Blog
+          </Link>
+          <Link className="nav-item" to="/contact">
+            Contact
+          </Link>
         </div>
       </nav>
     </>

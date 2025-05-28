@@ -90,3 +90,28 @@
     opacity: 0.5;
   }
 }
+
+.banner-btn {
+  width: auto;
+  position: relative;
+  margin-top: 1.6rem;
+  padding: 0.3rem 1.5rem;
+  color: #f706cf;
+  background-image: none;
+  background-color: transparent;
+  border: 1px solid #f706cf;
+  cursor: pointer;
+  transition: all 500ms ease-in-out;
+  z-index: 102;
+
+  &:hover {
+    color: white;
+    background-color: #f706cf;
+    border-radius: 100px;
+    // background-image: linear-gradient(
+    //   150deg,
+    //   #f706cf -100%,
+    //   #1f035c 110% // #f706cf 100% 190%
+    // );
+  }
+}

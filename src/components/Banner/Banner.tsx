@@ -1,3 +1,4 @@
+import { MessageCircle } from "lucide-react";
 // import GridRunner from "../Three/GridRunner/GridRunner";
 // import ParticleStars from "../Three/ParticleStars/ParticleStars";
 // import ParticleWaves from "../Three/ParticleWaves/ParticleWaves";
@@ -26,7 +27,7 @@ function Banner({
       <p className="banner-subtext">{subtext && subtext}</p>
       <div className="btn-grp">
         <button type="button" className="banner-btn">
-          Get in Touch!
+          Let's Talk! <MessageCircle />
         </button>
       </div>
       {/* <ParticleStars /> */}

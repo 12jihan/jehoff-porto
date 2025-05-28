@@ -1,7 +1,11 @@
 import { ReactElement } from "react";
 
 function Blog(): ReactElement {
-  return <div>blog</div>;
+  return (
+    <section className="blog-container">
+      <div>blog</div>
+    </section>
+  );
 }
 
 export default Blog;
