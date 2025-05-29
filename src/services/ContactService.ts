@@ -11,6 +11,16 @@ import {
   ContactFormData,
 } from "../interfaces/ContactForm/ContactForm.ts";
 
+/**
+ * Submits sanitized contact form data to the Firestore "contact-forms" collection.
+ *
+ * Trims and normalizes input fields, adds a server-generated timestamp and a default status, and returns the new document's ID upon success.
+ *
+ * @param formData - The contact form input to be submitted.
+ * @returns The Firestore document ID of the newly created contact form entry.
+ *
+ * @throws {Error} If the contact form submission fails.
+ */
 export async function submitContactForm(
   formData: ContactFormInput,
 ): Promise<string> {

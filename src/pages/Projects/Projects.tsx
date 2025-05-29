@@ -25,6 +25,13 @@ const fetchGitHubRepos = async (username: string): Promise<any> => {
   return response.data;
 };
 
+/**
+ * Displays a section featuring a GitHub user's contribution calendar and a list of their recent repositories.
+ *
+ * Fetches and renders up to five repositories for the user "12jihan" along with a themed contribution calendar. Shows loading and error states as appropriate.
+ *
+ * @returns The rendered projects section as a React element.
+ */
 function Projects(): ReactElement {
   const {
     data: projects,
