@@ -32,7 +32,7 @@ export async function submitContactForm(
       email: formData.email.toLowerCase().trim(),
       subject: formData.subject.trim(),
       message: formData.message.trim(),
-      phone: formData.phone?.trim(),
+      phone: formData.phone?.trim() || "",
       date_created: serverTimestamp(),
       status: "unread",
     };
