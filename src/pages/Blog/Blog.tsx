@@ -2,7 +2,7 @@ import "./Blog.scss";
 import { ReactElement } from "react";
 
 /**
- * Renders a placeholder section for the blog page indicating upcoming content.
+ * Displays a placeholder section for the blog page with a heading indicating that content is forthcoming.
  *
  * @returns A React element containing a heading and an empty container.
  */
