@@ -54,19 +54,21 @@ function Projects(): ReactElement {
         </div>
 
         <div className="recent-projects">
-          <h3>Recent Repositories</h3>
+          <h3>GitHub Repositories</h3>
           {isLoading && <p>Loading projects...</p>}
           {error && <p>Error loading projects: {error.message}</p>}
           {projects && (
             <div className="projects-grid">
-              {projects.slice(0, 6).map(
+              {/* {projects.slice(0, 6).map( */}
+              {projects.map(
                 (project: any): ReactElement => (
                   <div key={project.id} className="project-card">
                     <h4>{project.name}</h4>
                     <p>{project.description || "No description available"}</p>
                     <div className="project-meta">
-                      <span>⭐ {project.stargazers_count}</span>
-                      <span>🍴 {project.forks_count}</span>
+                      {/* <span> */}
+                      {/*   ⭐ {project.stargazers_count}🍴 {project.forks_count} */}
+                      {/* </span> */}
                       {project.language && <span>📝 {project.language}</span>}
                     </div>
                     {/* <a */}
