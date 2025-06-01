@@ -3,13 +3,6 @@ import { ReactElement } from "react";
 // import ContactFormData from "../../interfaces/ContactForm/ContactForm";
 
 export default function ContactForm(): ReactElement {
-  // const [formData, setFormData] = useState<ContactFormData>({
-  //   name: "",
-  //   email: "",
-  //   message: "",
-  //   subscribe: false,
-  // });
-
   return (
     <div className="form-wrapper">
       <h3>Contact Me</h3>
