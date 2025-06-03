@@ -1,12 +1,5 @@
 import { useState } from "react";
-import {
-  collection,
-  addDoc,
-  Timestamp,
-  documentId,
-  doc,
-  setDoc,
-} from "firebase/firestore";
+import { collection, Timestamp, doc, setDoc } from "firebase/firestore";
 import { db } from "../../firebase";
 import {
   IContactFormInput,
