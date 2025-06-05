@@ -1,0 +1,40 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/functions" as *;
+@use "../abstracts/mixins" as *;
+@use "sass:color";
+
+.top-nav {
+  height: 3.5em;
+  padding: 0 1.5em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: color("primary");
+
+  &__nav-group {
+    color: white;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    a {
+      color: white;
+    }
+  }
+
+  &__nav-item {
+    text-decoration: none;
+    color: white;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    transition: all 300ms ease-in-out;
+
+    &:hover {
+      background-color: #f706cf;
+      text-decoration: none;
+    }
+  }
+}

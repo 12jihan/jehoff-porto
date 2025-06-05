@@ -5,8 +5,8 @@ import { Link } from "react-router";
 function Navbar(): ReactElement {
   return (
     <>
-      <nav className="nav-container">
-        <div className="nav-grp">
+      <nav className="top-nav">
+        <div className="top-nav__nav-group">
           {/* Branding */}
           <Link className="nav-item" to="/">
             {"< JEHOFF />"}
