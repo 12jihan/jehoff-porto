@@ -3,14 +3,33 @@
 @use "../abstracts/mixins" as *;
 @use "sass:color";
 
-.button {
-  @include flex(row, center, center);
+.btn__group {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: spacing("5");
+  z-index: 101;
+}
+
+.btn {
+  display: flex;
+  flex-direction: row;
+  justify-items: center;
   padding: spacing("2") spacing("4");
   border: none;
+  font-size: font-size("base");
   border-radius: 4px;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.2s ease;
+  // transition: all 0.2s ease;
+  transition: all 150ms ease-in;
+
+  svg {
+    font-size: font-size("sm");
+    margin-left: spacing("3");
+  }
 
   &--primary {
     background-color: color("primary");
@@ -28,5 +47,24 @@
   &--secondary {
     background-color: color("secondary");
     color: color("white");
+  }
+
+  // Lime
+  &--lime {
+    color: black;
+    background-color: color("lime");
+    &:hover {
+      background-color: brighter("lime", 5);
+    }
+  }
+  &--lime-outline {
+    color: color("lime");
+    background-color: transparent;
+    border: 1px solid color("lime");
+
+    &:hover {
+      color: black;
+      background-color: color("lime");
+    }
   }
 }

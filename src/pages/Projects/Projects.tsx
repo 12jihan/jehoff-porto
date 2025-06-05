@@ -48,16 +48,12 @@ function Projects(): ReactElement {
     <>
       <section className="projects-container">
         <h2>Projects</h2>
-        <div className="calendar-container">
-          <GitHubCalendar
-            username="12jihan"
-            colorScheme="dark"
-            // labels
-            theme={{
-              light: ["#1f035c", "#5b46e5", "#8d41e4", "#a65aff", "#f706cf"],
-              dark: ["#1f035c", "#5b46e5", "#8d41e4", "#a65aff", "#f706cf"],
-            }}
-          />
+
+        <div className="recent-projects">
+          <h3>Featured Projects</h3>
+          <div className="featured-container">
+            <p>(Currently No Featured Projects)</p>
+          </div>
         </div>
 
         <div className="recent-projects">
@@ -91,6 +87,17 @@ function Projects(): ReactElement {
               )}
             </div>
           )}
+          <div className="calendar-container">
+            <GitHubCalendar
+              username="12jihan"
+              colorScheme="dark"
+              // labels
+              theme={{
+                light: ["#1f035c", "#5b46e5", "#8d41e4", "#a65aff", "#f706cf"],
+                dark: ["#1f035c", "#5b46e5", "#8d41e4", "#a65aff", "#f706cf"],
+              }}
+            />
+          </div>
         </div>
       </section>
     </>
