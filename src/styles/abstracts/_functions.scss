@@ -24,7 +24,7 @@
   @return color.adjust($color, $lightness: -$amount);
 }
 
-@function brighter($color-key, $step: 1) {
+@function brighter($color-key, $step: 1, $opacity: 1) {
   $color: color($color-key);
 
   @if not map.has-key($steps, $step) {
@@ -32,5 +32,5 @@
   }
 
   $amount: map.get($steps, $step);
-  @return color.adjust($color, $lightness: $amount);
+  @return rgba(color.adjust($color, $lightness: $amount), $opacity);
 }

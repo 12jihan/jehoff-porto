@@ -5,7 +5,7 @@ import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
 import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass.js";
 
 // Assuming you have a SCSS file for basic container styling
-// import "./ParticleWaves.scss";
+import "./ParticleWaves.scss";
 
 function ParticleWaves(): ReactElement {
   const mountRef: RefObject<HTMLDivElement | null> = useRef(null);
@@ -14,7 +14,7 @@ function ParticleWaves(): ReactElement {
   const createParticleTexture = (): THREE.Texture => {
     const canvas = document.createElement("canvas");
     const context = canvas.getContext("2d");
-    const size = 128; // Texture size
+    const size = 64; // Texture size
     canvas.width = size;
     canvas.height = size;
 
@@ -40,10 +40,10 @@ function ParticleWaves(): ReactElement {
       size / 2, // y1
       size / 2, // r1 (outer radius)
     );
-    gradient.addColorStop(0, "rgba(255, 255, 255, 1)"); // Center (fully opaque white)
-    gradient.addColorStop(0.2, "rgba(200, 200, 255, 0.8)"); // Inner glow (slightly blueish, less opaque)
-    gradient.addColorStop(0.5, "rgba(150, 100, 255, 0.3)"); // Mid glow (more color, more transparent)
-    gradient.addColorStop(1, "rgba(100, 0, 255, 0)"); // Edge (fully transparent)
+    gradient.addColorStop(0, "rgba(133, 255, 0, 1)"); // Center (fully opaque white)
+    gradient.addColorStop(0.2, "rgba(133, 255, 0, 0.8)"); // Inner glow (slightly blueish, less opaque)
+    gradient.addColorStop(0.5, "rgba(133, 255, 0, 0.3)"); // Mid glow (more color, more transparent)
+    gradient.addColorStop(1, "rgba(150, 100, 255, 0)"); // Edge (fully transparent)
 
     context.fillStyle = gradient;
     context.fillRect(0, 0, size, size);
@@ -66,15 +66,16 @@ function ParticleWaves(): ReactElement {
     const getHeight = () => mountNode.clientHeight;
 
     const scene = new THREE.Scene();
+    scene.background = new THREE.Color("#111217");
     const camera = new THREE.PerspectiveCamera(
       75, // Adjusted FOV slightly
       getWidth() / getHeight(),
       0.1,
       100,
     );
-    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
     renderer.setSize(getWidth(), getHeight());
-    renderer.setClearColor(new THREE.Color("black"), 1); // Set background to black
+    renderer.setClearColor("#111217", 1.0); // Set background to black
     mountNode.appendChild(renderer.domElement);
 
     camera.position.set(0, 0, 3); // Adjusted camera position
@@ -85,12 +86,12 @@ function ParticleWaves(): ReactElement {
     const viewHeight = viewWidth / aspectRatio;
 
     // --- Grid Helper Setup ---
-    const grid = new THREE.GridHelper(viewWidth, 30, "#222222", "#111111"); // Darkened grid for black background
+    const grid = new THREE.GridHelper(viewWidth, 30, "#85ff00", "#85ff00"); // Darkened grid for black background
     if (grid.material instanceof THREE.Material) {
       grid.material.depthTest = false;
       grid.material.depthWrite = false;
       grid.material.transparent = true;
-      grid.material.opacity = 0.5; // Make grid very subtle on black
+      grid.material.opacity = 0.008;
     }
     grid.rotateX(THREE.MathUtils.degToRad(90));
     grid.renderOrder = 0;
@@ -102,7 +103,6 @@ function ParticleWaves(): ReactElement {
     const positions = new Float32Array(particleCount * 3);
     const originalPositions = new Float32Array(particleCount * 3);
     const velocities = new Float32Array(particleCount * 2);
-
     for (let i = 0; i < particleCount; i++) {
       const i3 = i * 3;
       const i2 = i * 2;
@@ -122,29 +122,25 @@ function ParticleWaves(): ReactElement {
       "position",
       new THREE.BufferAttribute(positions, 3),
     );
-
     const particleTexture = createParticleTexture(); // Create the halo texture
-
     const particleMat = new THREE.PointsMaterial({
       map: particleTexture, // Apply the texture
-      // color: 0xffffff, // Set to white if texture provides color, or tint with this
-      size: 0.1, // Adjust size, texture affects perceived size
+      color: 0xffffff,
+      size: 0.04,
       transparent: true,
-      opacity: 0.9,
+      opacity: 0.8,
       blending: THREE.AdditiveBlending,
-      depthTest: false, // Keep these for layering
+      depthTest: false,
       depthWrite: false,
-      // alphaTest: 0.01, // May need this if edges of texture are not perfectly transparent
-      sizeAttenuation: true, // Points will be smaller further away
+      alphaTest: 0.01,
+      sizeAttenuation: true,
     });
-
     const particleMesh = new THREE.Points(particlesGeometry, particleMat);
     particleMesh.renderOrder = 1;
     scene.add(particleMesh);
 
     // --- Post-processing Setup (EffectComposer and UnrealBloomPass) ---
     const renderScene = new RenderPass(scene, camera);
-
     const bloomPass = new UnrealBloomPass(
       new THREE.Vector2(getWidth(), getHeight()),
       1.8, // strength - might need to adjust with textured particles
@@ -152,9 +148,9 @@ function ParticleWaves(): ReactElement {
       0.06, // threshold - might need to adjust
     );
     // Fine-tune bloom:
-    // bloomPass.strength = 0.8;
-    // bloomPass.radius = 0.5;
-    // bloomPass.threshold = 0.6;
+    bloomPass.strength = 1.5;
+    bloomPass.radius = 0.01;
+    bloomPass.threshold = 0.3;
 
     const composer = new EffectComposer(renderer);
     composer.addPass(renderScene);
@@ -162,7 +158,7 @@ function ParticleWaves(): ReactElement {
 
     // --- Mouse Interaction ---
     const mouse = new THREE.Vector2(-1000, -1000);
-    const mouseRadius = 0.25; // Adjusted
+    const mouseRadius = 0.15; // Adjusted
     const mouseStrength = 0.15; // Adjusted
 
     const handleMouseMove = (event: MouseEvent) => {
@@ -195,7 +191,6 @@ function ParticleWaves(): ReactElement {
       const elapsedTime = clock.getElapsedTime();
       const currentPositions = particlesGeometry.attributes.position
         .array as Float32Array;
-
       for (let i = 0; i < particleCount; i++) {
         const i3 = i * 3;
         const i2 = i * 2;
@@ -292,14 +287,7 @@ function ParticleWaves(): ReactElement {
     };
   }, []);
 
-  const styles: React.CSSProperties = {
-    width: "100%",
-    height: "100vh",
-    overflow: "hidden",
-    backgroundColor: "#000000", // Set container background to black
-  };
-
-  return <div style={styles} ref={mountRef}></div>;
+  return <div className="three-scene" ref={mountRef}></div>;
 }
 
 export default ParticleWaves;

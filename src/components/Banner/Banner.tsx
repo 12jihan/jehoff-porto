@@ -1,9 +1,9 @@
 import { Code2Icon, MessageCircle } from "lucide-react";
 // import GridRunner from "../Three/GridRunner/GridRunner";
 // import ParticleStars from "../Three/ParticleStars/ParticleStars";
-// import ParticleWaves from "../Three/ParticleWaves/ParticleWaves";
+import ParticleWaves from "../Three/ParticleWaves/ParticleWaves";
 // import ParticleShader from "../Three/ParticleShader/ParticleShader";
-import MovingDotsBG from "../MovingDotsBG/MovingDotsBG";
+// import MovingDotsBG from "../MovingDotsBG/MovingDotsBG";
 import "./Banner.scss";
 import { ReactElement } from "react";
 
@@ -23,21 +23,23 @@ function Banner({
       className="banner"
       style={{ backgroundColor: backgroundColor ? backgroundColor : "" }}
     >
-      {title && <h1 className="banner__title">{title}</h1>}
-      <p className="banner__subtext">{subtext && subtext}</p>
-      <div className="btn__group">
-        <button type="button" className="btn btn--lime-outline">
-          Let's Talk! <MessageCircle />
-        </button>
-        <button type="button" className="btn btn--lime">
-          Checkout My Projects <Code2Icon />
-        </button>
+      <div className="banner__content">
+        {title && <h1 className="banner__title">{title}</h1>}
+        <p className="banner__subtext">{subtext && subtext}</p>
+        <div className="btn__group">
+          <button type="button" className="btn btn--lime-outline">
+            Let's Talk! <MessageCircle />
+          </button>
+          <button type="button" className="btn btn--lime">
+            Checkout My Projects <Code2Icon />
+          </button>
+        </div>
       </div>
       {/* <ParticleStars /> */}
       {/* <GridRunner /> */}
-      {/* <ParticleWaves /> */}
+      <ParticleWaves />
       {/* <ParticleShader /> */}
-      <MovingDotsBG />
+      {/* <MovingDotsBG /> */}
     </div>
   );
 }
