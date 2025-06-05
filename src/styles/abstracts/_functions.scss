@@ -1,4 +1,5 @@
 @use "sass:map";
+@use "sass:color";
 @use "variables" as *;
 
 @function color($key) {
@@ -11,4 +12,25 @@
 
 @function font-size($key) {
   @return map.get($font-sizes, $key);
+}
+
+@function darker($color-key, $step: 1) {
+  $color: color($color-key);
+  @if not map.has-key($steps, $step) {
+    @error "Invalid step: #{$step}. Use steps 1-8";
+  }
+
+  $amount: map.get($steps, $step);
+  @return color.adjust($color, $lightness: -$amount);
+}
+
+@function brighter($color-key, $step: 1) {
+  $color: color($color-key);
+
+  @if not map.has-key($steps, $step) {
+    @error "Invalid step: #{$step}. Use steps 1-8";
+  }
+
+  $amount: map.get($steps, $step);
+  @return color.adjust($color, $lightness: $amount);
 }

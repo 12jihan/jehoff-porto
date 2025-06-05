@@ -1,4 +1,4 @@
-import { MessageCircle } from "lucide-react";
+import { Code2Icon, MessageCircle } from "lucide-react";
 // import GridRunner from "../Three/GridRunner/GridRunner";
 // import ParticleStars from "../Three/ParticleStars/ParticleStars";
 // import ParticleWaves from "../Three/ParticleWaves/ParticleWaves";
@@ -20,14 +20,17 @@ function Banner({
 }: BannerProps): ReactElement {
   return (
     <div
-      className="banner-container"
+      className="banner"
       style={{ backgroundColor: backgroundColor ? backgroundColor : "" }}
     >
-      {title && <h1 className="banner-header">{title}</h1>}
-      <p className="banner-subtext">{subtext && subtext}</p>
-      <div className="btn-grp">
-        <button type="button" className="banner-btn">
+      {title && <h1 className="banner__title">{title}</h1>}
+      <p className="banner__subtext">{subtext && subtext}</p>
+      <div className="btn__group">
+        <button type="button" className="btn btn--lime-outline">
           Let's Talk! <MessageCircle />
+        </button>
+        <button type="button" className="btn btn--lime">
+          Checkout My Projects <Code2Icon />
         </button>
       </div>
       {/* <ParticleStars /> */}
