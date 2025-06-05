@@ -30,7 +30,7 @@
     background: linear-gradient(
       45deg,
       color("lime") 0%,
-      color("primary") 50%,
+      darker("lime", 5) 50%,
       color("lime") 100%
     );
     background-size: 200% 200%;
@@ -38,7 +38,7 @@
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    -webkit-text-stroke: 0.5px darken(color("lime"), 8);
+    // -webkit-text-stroke: 0.5px darker("lime", 5);
     position: relative;
     z-index: 101;
     transition: background-position 800ms ease-in;
