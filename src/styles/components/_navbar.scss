@@ -10,6 +10,7 @@
   flex-direction: row;
   justify-content: space-between;
   background-color: color("primary");
+  border-bottom: 1px dashed color("lime");
 
   &__group {
     height: auto;

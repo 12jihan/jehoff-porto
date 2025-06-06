@@ -25,7 +25,7 @@ export default function TechnologiesList(): ReactElement {
   return (
     <>
       <section className="home-container">
-        <div className="header-container">
+        <div className="section-header">
           <h2>Technologies</h2>
         </div>
         <div className="tech-list">

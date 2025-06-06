@@ -1,3 +1,21 @@
 @use "../abstracts/variables" as *;
 @use "../abstracts/_functions.scss" as *;
 @use "../abstracts/mixins" as *;
+
+.footer {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 3.5rem;
+  width: 100%;
+  color: color("lime");
+  background-color: color("primary");
+  border-top: 1px dashed color("lime");
+
+  p {
+    font-size: 1.1rem;
+    margin: 0;
+  }
+}

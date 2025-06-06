@@ -30,7 +30,7 @@ export default function Home(): ReactElement {
       />
       <TechnologiesList />
       <section className="home-container">
-        <div className="header-container">
+        <div className="section-header">
           <h2>Work Experience</h2>
         </div>
         <div className="intro-container">

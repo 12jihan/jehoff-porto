@@ -1,0 +1,41 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/functions" as *;
+@use "../abstracts/mixins" as *;
+@use "sass:color";
+
+.badge {
+  padding: 0.1rem 0.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  // color: color("lime");
+  color: color("primary");
+  background-color: color("lime");
+  border: 1px solid color("lime");
+  border-radius: 3px;
+}
+
+.badge--outline {
+  padding: 0.1rem 0.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  // color: color("lime");
+  color: color("lime");
+  background-color: transparent;
+  border: 1px solid color("lime");
+  border-radius: 3px;
+}
+
+.badge-group-h {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.8rem;
+  overflow-x: hidden;
+}

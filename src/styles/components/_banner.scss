@@ -27,6 +27,7 @@
   }
 
   &__title {
+    margin-bottom: 1.8rem;
     background: linear-gradient(
       45deg,
       color("lime") 0%,
@@ -39,8 +40,6 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     // -webkit-text-stroke: 0.5px darker("lime", 5);
-    position: relative;
-    z-index: 101;
     transition: background-position 800ms ease-in;
     will-change: background-position;
 
@@ -54,6 +53,6 @@
     font-size: font-size("lg");
     width: 32rem;
     text-align: center;
-    z-index: 101;
+    margin-bottom: 1.8rem;
   }
 }

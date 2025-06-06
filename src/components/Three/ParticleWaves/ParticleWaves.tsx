@@ -98,7 +98,7 @@ function ParticleWaves(): ReactElement {
     scene.add(grid);
 
     // --- Particle System Setup ---
-    const particleCount = 2000; // Slightly reduced count for performance with textures
+    const particleCount = 2000;
     const particlesGeometry = new THREE.BufferGeometry();
     const positions = new Float32Array(particleCount * 3);
     const originalPositions = new Float32Array(particleCount * 3);
