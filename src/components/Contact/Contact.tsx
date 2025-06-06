@@ -10,18 +10,20 @@ export default function Contact(): ReactElement {
   };
 
   return (
-    <div className="contact-container">
-      <h2>Let's Connect!</h2>
-      <div className="text-group-v">
+    <section className="contact-container">
+      <h2 className="section-header-center">Let's Connect!</h2>
+      <div className="section-body">
         <p>
           I'm always excited to discuss new projects and opportunities. Whether
           you need help with a specific challenge or want to explore potential
           collaboration, I'd love to hear from you.
         </p>
         <div className="btn-grp">
-          <button onClick={goToContact}>Contact Me Now</button>
+          <button className="btn btn--lime-outline" onClick={goToContact}>
+            Contact Me Now
+          </button>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

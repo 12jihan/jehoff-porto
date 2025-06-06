@@ -9,7 +9,7 @@ import { ReactElement } from "react";
 function Blog(): ReactElement {
   return (
     <section className="blog-container">
-      <h2>Coming Soon...</h2>
+      <h2 className="section-header-center">Coming Soon...</h2>
       <div></div>
     </section>
   );

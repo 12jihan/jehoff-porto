@@ -26,27 +26,24 @@ export default function Home(): ReactElement {
         title={"Jareem E. Hoff"}
         subtext={introText}
         backgroundColor="transparent"
-        // backgroundColor="#0d0221"
       />
       <TechnologiesList />
       <section className="home-container">
-        <div className="section-header">
-          <h2>Work Experience</h2>
-        </div>
+        <h2 className="section-header-center">Work Experience</h2>
         <div className="intro-container">
           <div className="container intro-column">
             {experience
               .slice(0, 3)
               .map((job: Job, index: number): ReactElement => {
                 return (
-                  <div className="__long-card" key={index}>
-                    <div className="__long-card-header">
+                  <div className="long-card" key={index}>
+                    <div className="long-card__header">
                       <p className="job-name">{job.name}</p>
                       <p className="job-title">{job.title}</p>
                       <p className="job-location">New York, NY (Remote)</p>
                       <p className="job-date">{job.dates}</p>
                     </div>
-                    <div className="__long-card-body">
+                    <div className="long-card__body">
                       <ul>
                         {job.description
                           .slice(0, 4)

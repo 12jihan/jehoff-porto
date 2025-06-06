@@ -3,6 +3,24 @@
 @use "../abstracts/mixins" as *;
 @use "sass:color";
 
+.badge-group-v {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 1.4rem;
+  overflow-y: hidden;
+}
+
+.badge-group-h {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 1.4rem;
+  overflow-x: hidden;
+}
+
 .badge {
   padding: 0.1rem 0.4rem;
   display: flex;
