@@ -3,14 +3,27 @@
 @use "../abstracts/mixins" as *;
 @use "sass:color";
 
-section {
-  .section-header {
-    margin-bottom: 1.6rem;
-    h2 {
-      text-align: center;
-      color: color("lime");
-      // width: auto;
-      // border-bottom: 1px solid color("lime");
-    }
-  }
+.section-header-left {
+  text-align: center;
+  margin-bottom: 1.6rem;
+  text-align: center;
+  color: color("lime");
 }
+
+.section-header-center {
+  text-align: center;
+  margin-bottom: 1.6rem;
+  text-align: center;
+  color: color("lime");
+}
+
+.section-header-right {
+  text-align: center;
+  margin-bottom: 1.6rem;
+  text-align: center;
+  color: color("lime");
+}
+
+// section {
+//
+// }

@@ -12,9 +12,7 @@ function Resume(): ReactElement {
   return (
     <>
       <section className="">
-        <div className="section-header">
-          <h2>Resume</h2>
-        </div>
+        <h2 className="section-header-center">Resume</h2>
         <div className="resume">
           <div className="resume__header">
             <div className="header-item job-status">

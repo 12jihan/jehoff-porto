@@ -26,13 +26,10 @@ export default function Home(): ReactElement {
         title={"Jareem E. Hoff"}
         subtext={introText}
         backgroundColor="transparent"
-        // backgroundColor="#0d0221"
       />
       <TechnologiesList />
       <section className="home-container">
-        <div className="section-header">
-          <h2>Work Experience</h2>
-        </div>
+        <h2 className="section-header-center">Work Experience</h2>
         <div className="intro-container">
           <div className="container intro-column">
             {experience

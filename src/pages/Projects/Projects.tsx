@@ -47,12 +47,12 @@ function Projects(): ReactElement {
   return (
     <>
       <section className="projects-container">
-        <h2>Projects</h2>
+        <h2 className="section-header-center">Projects</h2>
 
         <div className="recent-projects">
           <h3>Featured Projects</h3>
-          <div className="featured-container">
-            <p>(Currently No Featured Projects)</p>
+          <div>
+            <p>(Currently No Featured Projects</p>
           </div>
         </div>
 
