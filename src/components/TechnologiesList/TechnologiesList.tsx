@@ -29,32 +29,32 @@ export default function TechnologiesList(): ReactElement {
           <h2>Technologies</h2>
         </div>
         <div className="tech-list">
-          <div className="tech-item">
-            <div className="tech-icon">
+          <div className="mini-card">
+            <div className="mini-card__icon">
               <FontAwesomeIcon size={iconSize} icon={faAngular} />
             </div>
             {/* <p>Angular</p> */}
           </div>
-          <div className="tech-item">
-            <div className="tech-icon">
+          <div className="mini-card">
+            <div className="mini-card__icon">
               <FontAwesomeIcon size={iconSize} icon={faReact} />
             </div>
             {/* <p>React</p> */}
           </div>
-          <div className="tech-item">
-            <div className="tech-icon">
+          <div className="mini-card">
+            <div className="mini-card__icon">
               <FontAwesomeIcon size={iconSize} icon={faNodeJs} />
             </div>
             {/* <p>NodeJS</p> */}
           </div>
-          <div className="tech-item">
-            <div className="tech-icon">
+          <div className="mini-card">
+            <div className="mini-card__icon">
               <FontAwesomeIcon size={iconSize} icon={faJava} />
             </div>
             {/* <p>Java</p> */}
           </div>
-          <div className="tech-item">
-            <div className="tech-icon">
+          <div className="mini-card">
+            <div className="mini-card__icon">
               <FontAwesomeIcon size={iconSize} icon={faAws} />
             </div>
             {/* <p>AWS</p> */}
