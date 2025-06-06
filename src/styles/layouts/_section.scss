@@ -1,0 +1,16 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/functions" as *;
+@use "../abstracts/mixins" as *;
+@use "sass:color";
+
+section {
+  .section-header {
+    margin-bottom: 1.6rem;
+    h2 {
+      text-align: center;
+      color: color("lime");
+      // width: auto;
+      // border-bottom: 1px solid color("lime");
+    }
+  }
+}

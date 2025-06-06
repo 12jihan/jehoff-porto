@@ -1,0 +1,74 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/functions" as *;
+@use "../abstracts/mixins" as *;
+@use "sass:color";
+
+.resume {
+  width: auto;
+  max-width: 48rem;
+  margin-inline: auto;
+  padding-inline: 1rem;
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid color("lime");
+    padding: 1.5rem 1.5rem;
+    border-bottom: none;
+
+    .header-item {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+
+      p {
+        color: color("white");
+      }
+
+      svg {
+        margin-left: 0.4rem;
+      }
+    }
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    // gap: 2.5rem;
+    background-color: transparent;
+    padding: 1rem 1.5rem;
+    border: 1px solid color("lime");
+    height: 50rem;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: color("lime") transparent;
+  }
+
+  &__job {
+    color: color("white");
+    padding: 1.5rem 0rem;
+    border-bottom: 1px dashed color("lime");
+
+    .job-header {
+      margin-bottom: 0.8rem;
+
+      &__item {
+        .job-name {
+          color: color("lime");
+          font-size: 1.4rem;
+          font-weight: 700;
+        }
+      }
+    }
+
+    .job-body {
+      &__item {
+        list-style-position: outside;
+        margin-left: 2rem;
+      }
+    }
+  }
+}
