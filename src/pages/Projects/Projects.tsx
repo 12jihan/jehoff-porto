@@ -46,7 +46,7 @@ function Projects(): ReactElement {
 
   return (
     <>
-      <section className="projects-container">
+      <section className="container">
         <h2 className="section-header-center">Projects</h2>
 
         <div className="recent-projects">

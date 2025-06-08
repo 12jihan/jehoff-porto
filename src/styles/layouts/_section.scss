@@ -11,10 +11,10 @@
 }
 
 .section-header-center {
-  margin-bottom: 1.6rem;
   color: color("lime");
+  margin-bottom: 1.8rem;
   text-decoration-line: underline;
-  text-underline-offset: 0.8rem;
+  text-underline-offset: 0.4rem;
   text-align: center;
 }
 
@@ -25,23 +25,17 @@
 }
 
 .section-body-center {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   width: 100%;
-
-  p {
-    font-size: 1.4rem;
-    text-align: center;
-    margin-bottom: 1.4rem;
-    width: 40rem;
-  }
-}
-
-.container-center {
   display: flex;
+  gap: 1.4rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+
+// .container-center {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+// }

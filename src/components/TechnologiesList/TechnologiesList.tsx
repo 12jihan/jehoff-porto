@@ -24,38 +24,40 @@ export default function TechnologiesList(): ReactElement {
 
   return (
     <>
-      <section className="home-container">
+      <section className="container">
         <h2 className="section-header-center">Technologies</h2>
-        <div className="tech-list">
-          <div className="mini-card">
-            <div className="mini-card__icon">
-              <FontAwesomeIcon size={iconSize} icon={faAngular} />
+        <div className="section-body-center">
+          <div className="tech-list">
+            <div className="mini-card">
+              <div className="mini-card__icon">
+                <FontAwesomeIcon size={iconSize} icon={faAngular} />
+              </div>
+              {/* <p>Angular</p> */}
             </div>
-            {/* <p>Angular</p> */}
-          </div>
-          <div className="mini-card">
-            <div className="mini-card__icon">
-              <FontAwesomeIcon size={iconSize} icon={faReact} />
+            <div className="mini-card">
+              <div className="mini-card__icon">
+                <FontAwesomeIcon size={iconSize} icon={faReact} />
+              </div>
+              {/* <p>React</p> */}
             </div>
-            {/* <p>React</p> */}
-          </div>
-          <div className="mini-card">
-            <div className="mini-card__icon">
-              <FontAwesomeIcon size={iconSize} icon={faNodeJs} />
+            <div className="mini-card">
+              <div className="mini-card__icon">
+                <FontAwesomeIcon size={iconSize} icon={faNodeJs} />
+              </div>
+              {/* <p>NodeJS</p> */}
             </div>
-            {/* <p>NodeJS</p> */}
-          </div>
-          <div className="mini-card">
-            <div className="mini-card__icon">
-              <FontAwesomeIcon size={iconSize} icon={faJava} />
+            <div className="mini-card">
+              <div className="mini-card__icon">
+                <FontAwesomeIcon size={iconSize} icon={faJava} />
+              </div>
+              {/* <p>Java</p> */}
             </div>
-            {/* <p>Java</p> */}
-          </div>
-          <div className="mini-card">
-            <div className="mini-card__icon">
-              <FontAwesomeIcon size={iconSize} icon={faAws} />
+            <div className="mini-card">
+              <div className="mini-card__icon">
+                <FontAwesomeIcon size={iconSize} icon={faAws} />
+              </div>
+              {/* <p>AWS</p> */}
             </div>
-            {/* <p>AWS</p> */}
           </div>
         </div>
       </section>

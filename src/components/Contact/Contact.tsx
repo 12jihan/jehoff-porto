@@ -10,10 +10,10 @@ export default function Contact(): ReactElement {
   };
 
   return (
-    <section className="contact-container">
+    <section className="container">
       <h2 className="section-header-center">Let's Connect!</h2>
       <div className="section-body-center">
-        <p>
+        <p className="subtext-center white">
           I'm always excited to discuss new projects and opportunities. Whether
           you need help with a specific challenge or want to explore potential
           collaboration, I'd love to hear from you.
