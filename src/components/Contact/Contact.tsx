@@ -5,14 +5,14 @@ import { NavigateFunction } from "react-router";
 
 export default function Contact(): ReactElement {
   const nav: NavigateFunction = useNavigate();
-  const goToContact = (): void => {
+  const goToContact: () => void = (): void => {
     nav("/contact");
   };
 
   return (
     <section className="contact-container">
       <h2 className="section-header-center">Let's Connect!</h2>
-      <div className="section-body">
+      <div className="section-body-center">
         <p>
           I'm always excited to discuss new projects and opportunities. Whether
           you need help with a specific challenge or want to explore potential
