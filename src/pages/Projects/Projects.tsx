@@ -93,8 +93,8 @@ function Projects(): ReactElement {
               colorScheme="dark"
               // labels
               theme={{
-                light: ["#1f035c", "#5b46e5", "#8d41e4", "#a65aff", "#f706cf"],
-                dark: ["#1f035c", "#5b46e5", "#8d41e4", "#a65aff", "#f706cf"],
+                light: ["#0b0b0b", "#85ff00"],
+                dark: ["#0b0b0b", "#85ff00"],
               }}
             />
           </div>

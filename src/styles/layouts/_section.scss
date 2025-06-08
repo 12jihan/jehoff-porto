@@ -15,6 +15,8 @@
   margin-bottom: 1.6rem;
   text-align: center;
   color: color("lime");
+  text-decoration-line: underline;
+  text-underline-offset: 0.8rem;
 }
 
 .section-header-right {
@@ -24,6 +26,17 @@
   color: color("lime");
 }
 
-// section {
-//
-// }
+.section-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40rem;
+}
+
+.container-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
