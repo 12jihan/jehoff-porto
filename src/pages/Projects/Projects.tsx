@@ -46,10 +46,12 @@ function Projects(): ReactElement {
         <h2 className="section-header-center">Projects</h2>
 
         <div className="section-body-left">
-          <div className="recent-projects ">
+          <div className="featured ">
             <h3 className="sub-header">Featured Projects</h3>
-            <div className="recent-list">
-              <p className="white">(Currently No Featured Projects)</p>
+            <div className="featured__body">
+              <p className="white">
+                (Currently There is No Featured Project Selected)
+              </p>
             </div>
           </div>
 

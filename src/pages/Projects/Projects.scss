@@ -7,6 +7,18 @@
   color: white;
 }
 
+.featured {
+  margin-bottom: 1.4rem;
+  &__body {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    p {
+      font-size: 1.12rem;
+    }
+  }
+}
 .project-footer {
   border: solid 1px color("lime");
   border-top: none;
