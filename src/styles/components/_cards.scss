@@ -3,6 +3,15 @@
 @use "../abstracts/functions" as *;
 @use "../abstracts/mixins" as *;
 
+.plain-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1.8rem;
+  border: 1px solid color("lime");
+}
+
 .mini-card {
   display: flex;
   flex-direction: row;

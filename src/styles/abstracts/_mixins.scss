@@ -36,6 +36,6 @@
 @mixin container {
   width: 100%;
   max-width: $container-max-width;
-  margin-inline: auto;
   padding-inline: map.get($spacing, "4");
+  margin-inline: auto;
 }

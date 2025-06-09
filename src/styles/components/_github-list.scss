@@ -1,0 +1,33 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/functions" as *;
+@use "../abstracts/mixins" as *;
+
+.project-container {
+  // min-height: calc(8rem * 3.5);
+  max-height: calc(8rem * 3.5);
+  // max-height: 30rem;
+  border: 1px solid color("lime");
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: color("lime") transparent;
+  &:nth-last-child {
+    border-bottom: none;
+  }
+
+  .project-card {
+    display: flex;
+    flex-direction: row;
+    height: 8rem;
+    padding: 1rem;
+    border-bottom: 2px dashed color("lime");
+
+    &__left {
+      margin-right: auto;
+    }
+    &__right {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+  }
+}

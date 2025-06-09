@@ -28,51 +28,46 @@ export default function Home(): ReactElement {
         backgroundColor="transparent"
       />
       <TechnologiesList />
-      <section className="home-container">
+      <section className="container">
         <h2 className="section-header-center">Work Experience</h2>
-        <div className="intro-container">
-          <div className="container intro-column">
-            {experience
-              .slice(0, 3)
-              .map((job: Job, index: number): ReactElement => {
-                return (
-                  <div className="long-card" key={index}>
-                    <div className="long-card__header">
-                      <p className="job-name">{job.name}</p>
-                      <p className="job-title">{job.title}</p>
-                      <p className="job-location">New York, NY (Remote)</p>
-                      <p className="job-date">{job.dates}</p>
-                    </div>
-                    <div className="long-card__body">
-                      <ul>
-                        {job.description
-                          .slice(0, 4)
-                          .map((bullet: string): ReactElement => {
-                            return (
-                              <li key={bullet}>{limitString(bullet, 80)}</li>
-                            );
-                          })}
-                      </ul>
+        <div className="section-body-center">
+          {experience
+            .slice(0, 3)
+            .map((job: Job, index: number): ReactElement => {
+              return (
+                <div className="long-card" key={index}>
+                  <div className="long-card__header">
+                    <p className="job-name">{job.name}</p>
+                    <p className="job-title">{job.title}</p>
+                    <p className="job-location">New York, NY (Remote)</p>
+                    <p className="job-date">{job.dates}</p>
+                  </div>
+                  <div className="long-card__body">
+                    <ul>
+                      {job.description
+                        .slice(0, 4)
+                        .map((bullet: string): ReactElement => {
+                          return (
+                            <li key={bullet}>{limitString(bullet, 80)}</li>
+                          );
+                        })}
+                    </ul>
 
-                      <div className="badge-group-h">
-                        {job.tech.map(
-                          (
-                            tech: string,
-                            index: number,
-                          ): ReactElement | null => {
-                            return (
-                              <span className="badge" key={index}>
-                                {tech}
-                              </span>
-                            );
-                          },
-                        )}
-                      </div>
+                    <div className="badge-group-h">
+                      {job.tech.map(
+                        (tech: string, index: number): ReactElement | null => {
+                          return (
+                            <span className="badge" key={index}>
+                              {tech}
+                            </span>
+                          );
+                        },
+                      )}
                     </div>
                   </div>
-                );
-              })}
-          </div>
+                </div>
+              );
+            })}
         </div>
       </section>
       <Contact />

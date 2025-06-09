@@ -4,26 +4,38 @@
 @use "sass:color";
 
 .section-header-left {
-  text-align: center;
   margin-bottom: 1.6rem;
   text-align: center;
   color: color("lime");
+  text-align: left;
 }
 
 .section-header-center {
-  text-align: center;
-  margin-bottom: 1.6rem;
-  text-align: center;
   color: color("lime");
+  margin-bottom: 1.8rem;
+  text-decoration-line: underline;
+  text-underline-offset: 0.4rem;
+  text-align: center;
 }
 
 .section-header-right {
-  text-align: center;
   margin-bottom: 1.6rem;
-  text-align: center;
   color: color("lime");
+  text-align: right;
 }
 
-// section {
-//
+.section-body-center {
+  width: 100%;
+  display: flex;
+  gap: 1.4rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+// .container-center {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
 // }

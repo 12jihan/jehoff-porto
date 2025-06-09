@@ -2,7 +2,8 @@ import "./Projects.scss";
 import axios, { AxiosResponse } from "axios";
 import GitHubCalendar from "react-github-calendar";
 import { useQuery } from "@tanstack/react-query";
-import { ReactElement } from "react";
+import { ReactElement, useState } from "react";
+import { GitForkIcon } from "lucide-react";
 
 const api = axios.create({
   baseURL: "https://api.github.com",
@@ -25,13 +26,6 @@ const fetchGitHubRepos = async (username: string): Promise<any> => {
   return response.data;
 };
 
-/**
- * Displays a section featuring a GitHub user's contribution calendar and a list of their recent repositories.
- *
- * Fetches and renders up to five repositories for the user "12jihan" along with a themed contribution calendar. Shows loading and error states as appropriate.
- *
- * @returns The rendered projects section as a React element.
- */
 function Projects(): ReactElement {
   const {
     data: projects,
@@ -44,60 +38,86 @@ function Projects(): ReactElement {
     gcTime: 10 * 60 * 1000, // 10 minutes
   });
 
+  const [calendar, setCalendar] = useState<boolean>(false);
+
   return (
     <>
-      <section className="projects-container">
+      <section className="container">
         <h2 className="section-header-center">Projects</h2>
 
-        <div className="recent-projects">
-          <h3>Featured Projects</h3>
-          <div>
-            <p>(Currently No Featured Projects</p>
+        <div className="section-body-left">
+          <div className="featured ">
+            <h3 className="sub-header">Featured Projects</h3>
+            <div className="featured__body">
+              <p className="white">
+                (Currently There is No Featured Project Selected)
+              </p>
+            </div>
           </div>
-        </div>
 
-        <div className="recent-projects">
-          <h3>GitHub Repositories</h3>
+          <h3 className="sub-header">GitHub Repositories</h3>
           {isLoading && <p>Loading projects...</p>}
           {error && <p>Error loading projects: {error.message}</p>}
           {projects && (
-            <div className="projects-grid">
-              {/* {projects.slice(0, 6).map( */}
-              {projects.map(
-                (project: any): ReactElement => (
-                  <div key={project.id} className="project-card">
-                    <h4>{project.name}</h4>
-                    <p>{project.description || "No description available"}</p>
-                    <div className="project-meta">
-                      {/* <span> */}
-                      {/*   ⭐ {project.stargazers_count}🍴 {project.forks_count} */}
-                      {/* </span> */}
-                      {project.language && <span>📝 {project.language}</span>}
+            <>
+              <div className="project-container">
+                {/* {projects.slice(0, 6).map( */}
+                {projects.map(
+                  (project: any): ReactElement => (
+                    <div key={project.id} className="project-card">
+                      <div className="project-card__left">
+                        <h4 className="lime">{project.name}</h4>
+                        <p className="white">
+                          {project.description || "No description available"}
+                        </p>
+                        <p className="white">
+                          {project.stargazers_count}⭐ {project.forks_count}🍴
+                        </p>
+                        <p className="lime">
+                          {project.language && <i>{project.language}</i>}
+                        </p>
+                      </div>
+                      <div className="project-card__right">
+                        <a
+                          href={project.html_url}
+                          target="_blank"
+                          className="btn btn--sm btn--lime-outline "
+                        >
+                          View on GitHub
+                          <GitForkIcon />
+                        </a>
+                      </div>
                     </div>
-                    {/* <a */}
-                    {/*   href={project.html_url} */}
-                    {/*   target="_blank" */}
-                    {/*   // rel="noopener noreferrer" */}
-                    {/*   className="project-link" */}
-                    {/* > */}
-                    {/*   View on GitHub */}
-                    {/* </a> */}
-                  </div>
-                ),
-              )}
-            </div>
+                  ),
+                )}
+              </div>
+              <div className="project-footer">
+                <div className="footer-header">
+                  <h3 className="lime">Github Commit Calendar</h3>
+                  <button
+                    className="btn btn--sm btn--lime"
+                    onClick={() => {
+                      setCalendar(!calendar);
+                    }}
+                  >
+                    {calendar ? "Close" : "Open"} GitHub Calendar
+                  </button>
+                </div>
+                <div
+                  className={`footer-body ${!calendar ? "collapsed" : "expanded"}`}
+                >
+                  <GitHubCalendar
+                    username="12jihan"
+                    colorScheme="dark"
+                    theme={{
+                      light: ["#0b0b0b", "#85ff00"],
+                      dark: ["#0b0b0b", "#85ff00"],
+                    }}
+                  />
+                </div>
+              </div>
+            </>
           )}
-          <div className="calendar-container">
-            <GitHubCalendar
-              username="12jihan"
-              colorScheme="dark"
-              // labels
-              theme={{
-                light: ["#1f035c", "#5b46e5", "#8d41e4", "#a65aff", "#f706cf"],
-                dark: ["#1f035c", "#5b46e5", "#8d41e4", "#a65aff", "#f706cf"],
-              }}
-            />
-          </div>
         </div>
       </section>
     </>

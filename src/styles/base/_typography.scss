@@ -7,7 +7,6 @@ h3,
 h4,
 h5,
 h6 {
-  // margin-bottom: spacing("4");
   font-weight: 700;
   line-height: 1.2;
 }
@@ -25,6 +24,7 @@ h3 {
 }
 
 h4 {
+  color: color("lime");
   font-size: font-size("xl");
 }
 
@@ -34,12 +34,43 @@ p {
 
 a {
   text-decoration: none;
-
-  // &:hover {
-  //   text-decoration: underline;
-  // }
 }
 
 li {
   list-style-position: inside;
+}
+
+.sub-header {
+  color: color("lime");
+  text-align: left;
+  margin-bottom: spacing("6");
+  text-decoration-line: underline;
+  text-underline-offset: 0.6rem;
+}
+
+.subtext-left {
+  text-align: left;
+  font-size: font-size("2xl");
+}
+
+.subtext-center {
+  text-align: center;
+  font-size: font-size("2xl");
+}
+
+.subtext-right {
+  text-align: right;
+  font-size: font-size("2xl");
+}
+
+.white {
+  color: white;
+}
+
+.lime {
+  color: color("lime");
+}
+
+.primary {
+  color: color("primary");
 }
