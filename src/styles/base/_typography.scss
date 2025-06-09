@@ -24,6 +24,7 @@ h3 {
 }
 
 h4 {
+  color: color("lime");
   font-size: font-size("xl");
 }
 
@@ -37,6 +38,14 @@ a {
 
 li {
   list-style-position: inside;
+}
+
+.sub-header {
+  color: color("lime");
+  text-align: left;
+  margin-bottom: spacing("6");
+  text-decoration-line: underline;
+  text-underline-offset: 0.6rem;
 }
 
 .subtext-left {

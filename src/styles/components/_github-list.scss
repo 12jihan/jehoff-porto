@@ -1,0 +1,28 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/functions" as *;
+@use "../abstracts/mixins" as *;
+
+.project-container {
+  // min-height: calc(8rem * 3.5);
+  max-height: calc(8rem * 3.5);
+  // max-height: 30rem;
+  border: 1px solid color("lime");
+  overflow-y: scroll;
+
+  .project-card {
+    display: flex;
+    flex-direction: row;
+    height: 8rem;
+    padding: 1rem;
+    border-bottom: 1px solid color("lime");
+
+    &__left {
+      margin-right: auto;
+    }
+    &__right {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+  }
+}

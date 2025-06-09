@@ -3,6 +3,10 @@
 @use "../abstracts/mixins" as *;
 @use "sass:color";
 
+button {
+  cursor: pointer;
+}
+
 .btn__group {
   position: relative;
   display: flex;
@@ -46,6 +50,11 @@
   &--secondary {
     background-color: color("secondary");
     color: color("white");
+  }
+
+  &--sm {
+    border-radius: 4px;
+    padding: 0.2rem 0.8rem;
   }
 
   // Lime
