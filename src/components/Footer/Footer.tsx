@@ -4,7 +4,7 @@ import { ReactElement } from "react";
 export default function Footer(): ReactElement {
   return (
     <footer className="footer">
-      <p> © 2025 BlinkTek</p>
+      <p>Jareem E. Hoff © 2025</p>
     </footer>
   );
 }

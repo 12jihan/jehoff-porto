@@ -6,6 +6,7 @@ import ParticleWaves from "../Three/ParticleWaves/ParticleWaves";
 // import MovingDotsBG from "../MovingDotsBG/MovingDotsBG";
 import "./Banner.scss";
 import { ReactElement } from "react";
+import { NavigateFunction, useNavigate } from "react-router";
 
 export interface BannerProps {
   title?: string;
@@ -18,6 +19,8 @@ function Banner({
   subtext,
   backgroundColor,
 }: BannerProps): ReactElement {
+  const nav: NavigateFunction = useNavigate();
+
   return (
     <div
       className="banner"
@@ -27,17 +30,25 @@ function Banner({
         {title && <h1 className="banner__title">{title}</h1>}
         <p className="banner__subtext">{subtext && subtext}</p>
         <div className="btn__group">
-          <button type="button" className="btn btn--lime-outline">
+          <button
+            type="button"
+            className="btn btn--lime-outline"
+            onClick={(): void | Promise<void> => nav("/contact")}
+          >
             Let's Talk! <MessageCircle />
           </button>
-          <button type="button" className="btn btn--lime">
+          <button
+            type="button"
+            className="btn btn--lime"
+            onClick={(): void | Promise<void> => nav("/projects")}
+          >
             Checkout My Projects <Code2Icon />
           </button>
         </div>
       </div>
+      <ParticleWaves />
       {/* <ParticleStars /> */}
       {/* <GridRunner /> */}
-      <ParticleWaves />
       {/* <ParticleShader /> */}
       {/* <MovingDotsBG /> */}
     </div>
