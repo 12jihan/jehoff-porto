@@ -20,10 +20,10 @@ export default function ContactForm(): ReactElement {
 
   return (
     <div className="form-wrapper">
-      <h3>Contact Me</h3>
+      <h3 className="form-title sub-header">Contact Me</h3>
 
       <form className="form">
-        <label>
+        <label className="form__input">
           <span>Name:</span>
           {errors.name && (
             <span style={{ color: "red" }}>{errors.name.message}</span>
@@ -43,7 +43,7 @@ export default function ContactForm(): ReactElement {
             placeholder="Your Name..."
           />
         </label>
-        <label>
+        <label className="form__input">
           <span>Email:</span>
           <input
             {...register("email")}
@@ -51,9 +51,8 @@ export default function ContactForm(): ReactElement {
             placeholder="Your Email..."
           />
         </label>
-        <label>
+        <label className="form__textarea">
           <span>Message:</span>
-          {/* {...register()} */}
           <textarea
             {...register("message")}
             rows={7}
@@ -61,13 +60,16 @@ export default function ContactForm(): ReactElement {
             placeholder="Your Message..."
           />
         </label>
+        <div className="form__btns">
+          <button
+            type="button"
+            className="btn btn--sm btn--lime-outline"
+            onClick={handleSubmit(submitForm)}
+          >
+            Send Message
+          </button>
+        </div>
       </form>
-
-      <div className="btn-group">
-        <button type="button" onClick={handleSubmit(submitForm)}>
-          Send Message
-        </button>
-      </div>
     </div>
   );
 }
