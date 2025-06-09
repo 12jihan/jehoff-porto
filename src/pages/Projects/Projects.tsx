@@ -71,17 +71,14 @@ function Projects(): ReactElement {
                         <p className="white">
                           {project.stargazers_count}⭐ {project.forks_count}🍴
                         </p>
+                        <p className="lime">
+                          {project.language && <i>{project.language}</i>}
+                        </p>
                       </div>
-                      {/* <div className="project-meta"> */}
-                      {/* <span> */}
-                      {/* </span> */}
-                      {/* {project.language && <span>📝 {project.language}</span>} */}
-                      {/* </div> */}
                       <div className="project-card__right">
                         <a
                           href={project.html_url}
                           target="_blank"
-                          // rel="noopener noreferrer"
                           className="btn btn--sm btn--lime-outline "
                         >
                           View on GitHub
@@ -94,7 +91,7 @@ function Projects(): ReactElement {
               </div>
               <div className="project-footer">
                 <div className="footer-header">
-                  <h3 className="lime">Github Commits</h3>
+                  <h3 className="lime">Github Commit Calendar</h3>
                   <button
                     className="btn btn--sm btn--lime"
                     onClick={() => {
@@ -104,17 +101,17 @@ function Projects(): ReactElement {
                     {calendar ? "Close" : "Open"} GitHub Calendar
                   </button>
                 </div>
-                <div className="footer-body">
-                  {calendar && (
-                    <GitHubCalendar
-                      username="12jihan"
-                      colorScheme="dark"
-                      theme={{
-                        light: ["#0b0b0b", "#85ff00"],
-                        dark: ["#0b0b0b", "#85ff00"],
-                      }}
-                    />
-                  )}
+                <div
+                  className={`footer-body ${!calendar ? "collapsed" : "expanded"}`}
+                >
+                  <GitHubCalendar
+                    username="12jihan"
+                    colorScheme="dark"
+                    theme={{
+                      light: ["#0b0b0b", "#85ff00"],
+                      dark: ["#0b0b0b", "#85ff00"],
+                    }}
+                  />
                 </div>
               </div>
             </>

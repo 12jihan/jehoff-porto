@@ -19,7 +19,7 @@ export default function Contact(): ReactElement {
           collaboration, I'd love to hear from you.
         </p>
         <div className="btn-grp">
-          <button className="btn btn--lime-outline" onClick={goToContact}>
+          <button className="btn btn--lime" onClick={goToContact}>
             Contact Me Now
           </button>
         </div>
