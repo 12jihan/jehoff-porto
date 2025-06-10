@@ -6,22 +6,21 @@ import { useSubmitContactForm } from "../../customHooks/ContactFormHook";
 // import ContactFormData from "../../interfaces/ContactForm/ContactForm";
 
 export default function ContactForm(): ReactElement {
-  const { submitContact } = useSubmitContactForm();
+  const { submitContact, isLoading } = useSubmitContactForm();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<IContactFormInput>();
 
-  function submitForm(data: IContactFormInput): void {
+  async function submitForm(data: IContactFormInput): Promise<void> {
     const formData: IContactFormInput = data;
-    submitContact(formData);
+    await submitContact(formData);
   }
 
   return (
     <div className="form-wrapper">
       <h3 className="form-title sub-header">Contact Me</h3>
-
       <form className="form">
         <label className="form__input">
           <span>Name:</span>
@@ -63,10 +62,11 @@ export default function ContactForm(): ReactElement {
         <div className="form__btns">
           <button
             type="button"
-            className="btn btn--sm btn--lime-outline"
+            className={`btn--sm btn--lime-outline ${isLoading ? "disabled" : ""}`}
             onClick={handleSubmit(submitForm)}
+            disabled={true ? true : false}
           >
-            Send Message
+            {isLoading ? "Sending..." : "Send Message"}
           </button>
         </div>
       </form>

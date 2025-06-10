@@ -1,9 +1,5 @@
 import { Code2Icon, MessageCircle } from "lucide-react";
-// import GridRunner from "../Three/GridRunner/GridRunner";
-// import ParticleStars from "../Three/ParticleStars/ParticleStars";
 import ParticleWaves from "../Three/ParticleWaves/ParticleWaves";
-// import ParticleShader from "../Three/ParticleShader/ParticleShader";
-// import MovingDotsBG from "../MovingDotsBG/MovingDotsBG";
 import "./Banner.scss";
 import { ReactElement } from "react";
 import { NavigateFunction, useNavigate } from "react-router";
