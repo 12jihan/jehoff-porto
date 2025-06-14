@@ -11,7 +11,7 @@ export default function ContactForm(): ReactElement {
     register,
     handleSubmit,
     reset,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm<IContactFormInput>();
 
   async function submitForm(data: IContactFormInput): Promise<void> {

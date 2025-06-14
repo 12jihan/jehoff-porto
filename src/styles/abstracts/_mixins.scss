@@ -1,4 +1,5 @@
 @use "variables" as *;
+@use "functions" as *;
 @use "sass:map";
 
 // Media Queries
@@ -38,4 +39,17 @@
   max-width: $container-max-width;
   padding-inline: map.get($spacing, "4");
   margin-inline: auto;
+}
+
+@mixin button {
+  display: flex;
+  flex-direction: row;
+  justify-items: center;
+  padding: spacing("2") spacing("4");
+  border: none;
+  font-size: font-size("base");
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 150ms ease-in;
 }

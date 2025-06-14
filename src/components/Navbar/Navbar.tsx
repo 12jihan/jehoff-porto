@@ -1,6 +1,7 @@
-import { ReactElement } from "react";
+import { ReactElement, useState } from "react";
 import "./Navbar.scss";
-import { NavLink, NavLinkRenderProps } from "react-router";
+import { Link, NavLink, NavLinkRenderProps } from "react-router";
+import { AlignJustifyIcon } from "lucide-react";
 
 // @ts-ignore
 interface RouteItem {
@@ -34,6 +35,8 @@ function Navbar(): ReactElement {
     },
   ];
 
+  const [navState, setNavState] = useState<boolean>(true);
+
   return (
     <>
       <nav className="nav">
@@ -44,6 +47,13 @@ function Navbar(): ReactElement {
           </NavLink>
         </div>
         <div className="nav__group">
+          {/* <button */}
+          {/*   type="button" */}
+          {/*   className="btn__icon btn--lime-outline" */}
+          {/*   onClick={(): void => setNavState(!navState)} */}
+          {/* > */}
+          {/*   <AlignJustifyIcon /> */}
+          {/* </button> */}
           {routes.map((val: any, index: number): ReactElement => {
             let _val: string = val.name.toUpperCase();
 
@@ -61,6 +71,25 @@ function Navbar(): ReactElement {
           })}
         </div>
       </nav>
+      {/* {navState && ( */}
+      {/*   <div className="nav__mobile-group"> */}
+      {/*     {routes.map((val: any, index: number): ReactElement => { */}
+      {/*       let _val: string = val.name.toUpperCase(); */}
+      {/**/}
+      {/*       return ( */}
+      {/*         <NavLink */}
+      {/*           key={index} */}
+      {/*           className={({ isActive }: NavLinkRenderProps): string => */}
+      {/*             `nav__mobile-item ${isActive ? "nav--active" : ""}` */}
+      {/*           } */}
+      {/*           to={val.route} */}
+      {/*         > */}
+      {/*           <span>{_val}</span> */}
+      {/*         </NavLink> */}
+      {/*       ); */}
+      {/*     })} */}
+      {/*   </div> */}
+      {/* )} */}
     </>
   );
 }

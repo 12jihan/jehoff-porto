@@ -18,16 +18,20 @@ button {
 }
 
 .btn {
-  display: flex;
-  flex-direction: row;
-  justify-items: center;
-  padding: spacing("2") spacing("4");
-  border: none;
-  font-size: font-size("base");
-  border-radius: 4px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 150ms ease-in;
+  @include button;
+  // display: flex;
+  // flex-direction: row;
+  // justify-items: center;
+  // padding: spacing("2") spacing("4");
+  // border: none;
+  // font-size: font-size("base");
+  // border-radius: 4px;
+  // font-weight: 500;
+  // cursor: pointer;
+  // transition: all 150ms ease-in;
+  &__icon {
+    @include button;
+  }
 
   // Loading spinner animation
   .loading-spinner {
