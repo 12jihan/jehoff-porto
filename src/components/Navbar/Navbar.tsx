@@ -1,9 +1,7 @@
-import { ReactElement, useState } from "react";
+import { ReactElement } from "react";
 import "./Navbar.scss";
-import { Link, NavLink, NavLinkRenderProps } from "react-router";
-import { AlignJustifyIcon } from "lucide-react";
+import { NavLink, NavLinkRenderProps } from "react-router";
 
-// @ts-ignore
 interface RouteItem {
   name: string;
   route: string;
@@ -35,7 +33,7 @@ function Navbar(): ReactElement {
     },
   ];
 
-  const [navState, setNavState] = useState<boolean>(true);
+  // const [navState, setNavState] = useState<boolean>(true);
 
   return (
     <>
@@ -54,8 +52,8 @@ function Navbar(): ReactElement {
           {/* > */}
           {/*   <AlignJustifyIcon /> */}
           {/* </button> */}
-          {routes.map((val: any, index: number): ReactElement => {
-            let _val: string = val.name.toUpperCase();
+          {routes.map((val: RouteItem, index: number): ReactElement => {
+            const _val: string = val.name.toUpperCase();
 
             return (
               <NavLink
