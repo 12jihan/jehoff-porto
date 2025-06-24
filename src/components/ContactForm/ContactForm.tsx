@@ -2,21 +2,28 @@ import "./ContactForm.scss";
 import { useForm } from "react-hook-form";
 import { ReactElement } from "react";
 import { IContactFormInput } from "../../interfaces/ContactForm/IContactForm";
-import { useSubmitContactForm } from "../../customHooks/ContactFormHook";
+import { useSubmitContactForm } from "../../customHooks/useContactFormHook";
 // import ContactFormData from "../../interfaces/ContactForm/ContactForm";
 
 export default function ContactForm(): ReactElement {
-  const { submitContact, isLoading } = useSubmitContactForm();
+  const { submitContact, isLoading, success, error } = useSubmitContactForm();
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<IContactFormInput>();
 
   async function submitForm(data: IContactFormInput): Promise<void> {
-    const formData: IContactFormInput = data;
-    await submitContact(formData);
+    try {
+      await submitContact(data);
+      if (!error) reset();
+    } catch (err) {
+      console.error("Form submission error:", err);
+    }
   }
+
+  const isFormDisabled = isLoading || success;
 
   return (
     <div className="form-wrapper">
@@ -62,11 +69,15 @@ export default function ContactForm(): ReactElement {
         <div className="form__btns">
           <button
             type="button"
-            className={`btn--sm btn--lime-outline ${isLoading ? "disabled" : ""}`}
+            className={`btn btn--sm btn--lime-outline`}
             onClick={handleSubmit(submitForm)}
-            disabled={true ? true : false}
+            disabled={isFormDisabled}
           >
-            {isLoading ? "Sending..." : "Send Message"}
+            {isLoading
+              ? "Sending..."
+              : success
+                ? "Successfully Sent"
+                : "Send Message"}
           </button>
         </div>
       </form>

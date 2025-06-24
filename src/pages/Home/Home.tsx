@@ -4,21 +4,17 @@ import Contact from "../../components/Contact/Contact";
 import TechnologiesList from "../../components/TechnologiesList/TechnologiesList";
 import experience from "../../experience";
 import { Job } from "../../interfaces/Jobs/Job";
-import { ReactElement } from "react";
+import { ReactElement, useEffect } from "react";
+import { useAnalytics } from "../../customHooks/useAnalytics";
 
 export default function Home(): ReactElement {
   const introText: string =
     "Hi, I'm a professional FULLSTACK SOFTWARE ENGINEER with over 9 years experience crafting digital experiences that make a difference. I'm passionate about turning complex problems into elegant, user-friendly solutions.";
+  const { trackPageView } = useAnalytics();
 
-  function limitString(text: string, maxLength: number): string {
-    let shortened: string = "";
-    if (text.length >= maxLength) {
-      shortened = text.substring(0, maxLength) + " " + "...";
-    } else {
-      shortened = text;
-    }
-    return shortened;
-  }
+  useEffect(() => {
+    trackPageView("/home");
+  }, []);
 
   return (
     <>
@@ -73,4 +69,14 @@ export default function Home(): ReactElement {
       <Contact />
     </>
   );
+
+  function limitString(text: string, maxLength: number): string {
+    let shortened: string = "";
+    if (text.length >= maxLength) {
+      shortened = text.substring(0, maxLength) + " " + "...";
+    } else {
+      shortened = text;
+    }
+    return shortened;
+  }
 }
