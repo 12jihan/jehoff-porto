@@ -8,9 +8,9 @@ import { ReactElement } from "react";
  */
 function Blog(): ReactElement {
   return (
-    <section className="blog-container">
+    <section className="blogs">
       <h2 className="section-header-center">Coming Soon...</h2>
-      <div></div>
+      <div className="blog"></div>
     </section>
   );
 }

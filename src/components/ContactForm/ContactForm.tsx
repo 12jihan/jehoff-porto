@@ -2,7 +2,7 @@ import "./ContactForm.scss";
 import { useForm } from "react-hook-form";
 import { ReactElement } from "react";
 import { IContactFormInput } from "../../interfaces/ContactForm/IContactForm";
-import { useSubmitContactForm } from "../../customHooks/ContactFormHook";
+import { useSubmitContactForm } from "../../customHooks/useContactFormHook";
 // import ContactFormData from "../../interfaces/ContactForm/ContactForm";
 
 export default function ContactForm(): ReactElement {
