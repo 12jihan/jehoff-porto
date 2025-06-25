@@ -13,7 +13,7 @@ export default function Home(): ReactElement {
   const { trackPageView } = useAnalytics();
 
   useEffect(() => {
-    trackPageView("/home");
+    trackPageView("/home", "Home Page");
   }, []);
 
   return (
