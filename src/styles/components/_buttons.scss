@@ -82,19 +82,21 @@ button {
   // Lime
   &--lime {
     color: black;
-    background-color: color("lime");
+    background-color: color("white");
     &:hover {
-      background-color: brighter("lime", 5);
+      color: white;
+      background-color: color("dark");
     }
   }
+
   &--lime-outline {
-    color: color("lime");
+    color: color("white");
     background-color: transparent;
-    border: 1px solid color("lime");
+    border: 1px solid color("dark");
 
     &:hover {
       color: black;
-      background-color: color("lime");
+      background-color: color("white");
     }
   }
 }

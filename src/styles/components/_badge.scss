@@ -22,15 +22,16 @@
 }
 
 .badge {
+  font-size: 0.875rem;
   padding: 0.1rem 0.4rem;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   // color: color("lime");
-  color: color("primary");
-  background-color: color("lime");
-  border: 1px solid color("lime");
+  color: color("white");
+  background-color: color("transparent");
+  border: 1px solid color("dark");
   border-radius: 3px;
 }
 
@@ -41,9 +42,9 @@
   align-items: center;
   text-align: center;
   // color: color("lime");
-  color: color("lime");
+  color: color("white");
   background-color: transparent;
-  border: 1px solid color("lime");
+  border: 1px solid color("dark");
   border-radius: 3px;
 }
 

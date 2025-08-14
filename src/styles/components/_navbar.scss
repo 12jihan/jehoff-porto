@@ -11,7 +11,7 @@
   flex-direction: row;
   justify-content: space-between;
   background-color: color("primary");
-  border-bottom: 1px dashed color("lime");
+  border-bottom: 1px solid color("dark");
 
   &__group {
     height: auto;
@@ -55,7 +55,7 @@
   }
 
   &__item {
-    color: color("lime");
+    color: color("white");
     text-decoration: none;
     height: 100%;
     display: flex;
@@ -65,14 +65,14 @@
     transition: all 150ms ease-in-out;
 
     &:hover {
-      color: color("primary");
-      background-color: color("lime");
+      color: color("dark");
+      background-color: color("white");
     }
   }
 
   &--active {
-    color: color("primary");
-    background-color: color("lime");
+    color: color("dark");
+    background-color: color("white");
     text-decoration: none;
   }
 }

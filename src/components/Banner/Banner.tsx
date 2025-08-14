@@ -42,7 +42,7 @@ function Banner({
           </button>
         </div>
       </div>
-      <ParticleWaves />
+      {/* <ParticleWaves /> */}
       {/* <ParticleStars /> */}
       {/* <GridRunner /> */}
       {/* <ParticleShader /> */}
