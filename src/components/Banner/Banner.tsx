@@ -1,5 +1,5 @@
 import { Code2Icon, MessageCircle } from "lucide-react";
-import ParticleWaves from "../Three/ParticleWaves/ParticleWaves";
+// import ParticleWaves from "../Three/ParticleWaves/ParticleWaves";
 import "./Banner.scss";
 import { ReactElement } from "react";
 import { NavigateFunction, useNavigate } from "react-router";
